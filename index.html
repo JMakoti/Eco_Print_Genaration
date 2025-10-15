@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="brand">
+          <img src="img/Ecoprint Logo 3.png" alt="Logo" class="logo" />
+        </a>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link"
+              >Services <i class="fas fa-chevron-down"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Vertical Farming</a></li>
+              <li><a href="#">Grow Bags</a></li>
+              <li><a href="#">Living Walls</a></li>
+            </ul>
+          </li>
+          <li><a href="shop.html" class="nav-link">Shop</a></li>
+          <li><a href="#" class="nav-link">Projects</a></li>
+          <li><a href="#" class="nav-link">Donate</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hero Section Start -->
+    <section class="hero">
+      <div class="hero-video-grid">
+        <!-- Panel 1 -->
+        <div class="hero-col">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="img/poster-1.jpg"
+          >
+            <source src="videos/Plastic CollectionVId.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <!-- Panel 2 -->
+        <div class="hero-col">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="img/poster-2.jpg"
+          >
+            <source src="videos/3Dprinter.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <!-- Panel 3 -->
+        <div class="hero-col">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="img/poster-3.jpg"
+          >
+            <source src="videos/EduModel4.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <!-- Overlay -->
+        <div class="hero-scrim"></div>
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">Plastic Waste to Educational Models</h1>
+        <a href="#" class="btn-cta">Explore More</a>
+      </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Top Feature Start -->
+    <section class="top-feature py-5">
+      <div class="container">
+        <div class="tf-viewport">
+          <div class="tf-track" aria-label="Key features carousel">
+            <!-- Item 1 -->
+            <article class="tf-item">
+              <span class="tf-icon"><i class="fa fa-coins fa-2x"></i></span>
+              <div class="tf-text">
+                <h4>Affordable Cost</h4>
+                <p>We keep innovation within reach.</p>
+              </div>
+            </article>
+
+            <!-- Item 2 -->
+            <article class="tf-item">
+              <span class="tf-icon"><i class="fa fa-leaf fa-2x"></i></span>
+              <div class="tf-text">
+                <h4>Recycle • Renew • Reuse</h4>
+                <p>Materials with a smaller footprint.</p>
+              </div>
+            </article>
+
+            <!-- Item 3 -->
+            <article class="tf-item">
+              <span class="tf-icon"><i class="fa fa-phone fa-2x"></i></span>
+              <div class="tf-text">
+                <h4>Fast Turn-Around</h4>
+                <p>Quick responses during business hours.</p>
+              </div>
+            </article>
+
+            <!-- Item 4 -->
+            <article class="tf-item">
+              <span class="tf-icon"><i class="fa fa-cogs fa-2x"></i></span>
+              <div class="tf-text">
+                <h4>Precision 3D Printing</h4>
+                <p>Classroom-ready STEM models.</p>
+              </div>
+            </article>
+
+            <!-- Item 5 -->
+            <article class="tf-item">
+              <span class="tf-icon"><i class="fa fa-recycle fa-2x"></i></span>
+              <div class="tf-text">
+                <h4>EcoPrint Filaments</h4>
+                <p>From waste to learning tools.</p>
+              </div>
+            </article>
+
+            <!-- Duplicate items for seamless scroll -->
+            <!-- <article class="tf-item">
+              <span class="tf-icon"><i class="fa fa-smile fa-2x"></i></span>
+              <div class="tf-text">
+                <h4>Affordable Cost</h4>
+                <p>We keep innovation within reach.</p>
+              </div>
+            </article> -->
+            <article class="tf-item">
+              <span class="tf-icon"><i class="fa fa-leaf fa-2x"></i></span>
+              <div class="tf-text">
+                <h4>Recycle • Renew • Reuse</h4>
+                <p>Materials with a smaller footprint.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Top Feature End -->
+    <!---About Section-->
+    <section class="about section-pad" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <!-- Left block -->
+          <div class="about-card" data-animate="left">
+            <h2 class="about-title">Our Story</h2>
+            <p>
+              We transform plastic waste into affordable 3D-printing filaments
+              and classroom-ready STEM models—making hands-on learning
+              accessible while cleaning our environment.
+            </p>
+            <p>
+              From oceans and landfills to labs and schools, EcoPrint Generation
+              connects circular materials with real education impact.
+            </p>
+          </div>
+
+          <!-- Center image with play -->
+          <figure class="about-media" data-animate="up">
+            <img
+              src="img/school.jpeg"
+              alt="EcoPrint process splash"
+              loading="lazy"
+            />
+            <button
+              class="about-play"
+              type="button"
+              aria-label="Play video"
+              aria-haspopup="dialog"
+              aria-controls="about-video-modal"
+            >
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M8 5v14l11-7-11-7z" fill="currentColor" />
+              </svg>
+            </button>
+          </figure>
+
+          <!-- Right block -->
+          <div class="about-card" data-animate="right">
+            <h2 class="about-title">Our Vision</h2>
+            <p>
+              A continent where every learner can touch, see, and build science—
+              powered by sustainable materials and community innovation.
+            </p>
+            <ul class="tick-list">
+              <li>Lower cost, higher access</li>
+              <li>Materials from recycled plastics</li>
+              <li>Practical STEM for real schools</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CTA button -->
+        <div class="about-cta">
+          <a class="btn-cta" href="about.html">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div
+      class="modal"
+      id="about-video-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="EcoPrint video"
+      hidden
+    >
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-body" role="document">
+        <button
+          class="modal-close"
+          type="button"
+          aria-label="Close video"
+          data-close
+        >
+          &times;
+        </button>
+        <div class="video-wrap"></div>
+      </div>
+    </div>
+
+    <!-- ===================== PROCESS QUEST ===================== -->
+    <section class="process-quest section-pad" id="process">
+      <div class="container">
+        <!-- Header -->
+        <header class="pq-head">
+          <h2>Our Process</h2>
+          <div class="pq-meter" aria-hidden="true">
+            <div class="pq-fill"></div>
+          </div>
+          <div class="pq-ctrls">
+            <button class="pq-btn" data-dir="prev" aria-label="Previous step">
+              ‹
+            </button>
+            <button class="pq-btn" data-dir="next" aria-label="Next step">
+              ›
+            </button>
+          </div>
+        </header>
+
+        <div class="pq-viewport">
+          <!-- Decorative path under cards -->
+          <svg
+            class="pq-path"
+            viewBox="0 0 1200 220"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="pqGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#168630" />
+                <stop offset="100%" stop-color="#1f8837" />
+              </linearGradient>
+            </defs>
+            <path
+              class="pq-track"
+              d="M10,110 C180,10 320,210 480,110 S820,10 1190,110"
+              fill="none"
+            />
+            <path
+              class="pq-progress"
+              d="M10,110 C180,10 320,210 480,110 S820,10 1190,110"
+              fill="none"
+            />
+          </svg>
+
+          <!-- Cards -->
+          <ol class="pq-trackcards" aria-label="EcoPrint Generation Process">
+            <li class="pq-step">
+              <figure class="pq-card">
+                <img
+                  src="img/collecting plastic.jpg"
+                  alt="Collecting plastic waste"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <h3>Collect</h3>
+                  <p>
+                    Community clean-ups and buy-back partners gather plastic
+                    waste.
+                  </p>
+                  <span class="pq-badge">Level 1</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="pq-step">
+              <figure class="pq-card">
+                <img
+                  src="img/sorting2.jpeg"
+                  alt="Sorting and cleaning"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <h3>Sort & Clean</h3>
+                  <p>We sort by type and wash to quality standards.</p>
+                  <span class="pq-badge">Level 2</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="pq-step">
+              <figure class="pq-card">
+                <img
+                  src="img/Sort and Clean.jpg"
+                  alt="Shredding plastic"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <h3>Shred</h3>
+                  <p>Waste becomes uniform flakes for extrusion.</p>
+                  <span class="pq-badge">Level 3</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="pq-step">
+              <figure class="pq-card">
+                <img
+                  src="img/extrusion.jpeg"
+                  alt="Extrusion to filament"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <h3>Extrude</h3>
+                  <p>Precision temperature & puller control create filament.</p>
+                  <span class="pq-badge">Level 4</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="pq-step">
+              <figure class="pq-card">
+                <img
+                  src="img/spool3.jpeg"
+                  alt="Spooling filament"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <h3>Spool</h3>
+                  <p>Tolerances checked; filament is spooled & labeled.</p>
+                  <span class="pq-badge">Level 5</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="pq-step">
+              <figure class="pq-card">
+                <img
+                  src="img/pellets.jpeg"
+                  alt="3D printing models"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <h3>3D Print</h3>
+                  <p>We print durable STEM models for classrooms.</p>
+                  <span class="pq-badge">Level 6</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="pq-step">
+              <figure class="pq-card">
+                <img
+                  src="img/edu.jpg"
+                  alt="STEM education models in use"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <h3>STEM Models</h3>
+                  <p>Hands-on learning that sparks curiosity & skills.</p>
+                  <span class="pq-badge final">Completed</span>
+                </figcaption>
+              </figure>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <!-- Shop Start -->
+    <section class="shop-section">
+      <div class="shop-heading">
+        <h2>Order With Us</h2>
+      </div>
+
+      <div class="shop-container">
+        <!-- Card 1 -->
+        <a href="laptops.html" class="shop-card" data-animate>
+          <img src="img/edu.jpg" alt="Stem models" />
+          <div class="shop-overlay">
+            <h3>STEM Models</h3>
+            <span class="shop-link">SHOP NOW ➜</span>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="accessories.html" class="shop-card" data-animate>
+          <img src="img/prototype.jpeg" alt="Accessories Collection" />
+          <div class="shop-overlay">
+            <h3>Archtecture <br />Prototype</h3>
+            <span class="shop-link">SHOP NOW ➜</span>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="cameras.html" class="shop-card" data-animate>
+          <img src="img/beauty2.jpeg" alt="Cameras Collection" />
+          <div class="shop-overlay">
+            <h3>3D printed <br />Accessories</h3>
+            <span class="shop-link">SHOP NOW ➜</span>
+          </div>
+        </a>
+      </div>
+      <div class="about-cta">
+        <a class="btn-cta" href="about.html">Learn More</a>
+      </div>
+    </section>
+    <!-- Shop End -->
+    <section class="contact-section" id="contact-order">
+      <div class="contact-wrapper">
+        <header class="contact-header">
+          <h2 class="animate-title">Request a Quote / Custom Order</h2>
+          <p class="animate-subtitle">
+            Tell us what you need—materials, sizes, quantities—and optionally
+            attach a design.
+          </p>
+        </header>
+
+        <form id="orderForm" class="contact-form" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <input type="text" id="name" placeholder=" " required />
+              <label for="name">Full Name</label>
+            </div>
+
+            <div class="form-group">
+              <input type="email" id="email" placeholder=" " required />
+              <label for="email">Email Address</label>
+            </div>
+
+            <div class="form-group select-group">
+              <select id="category" required>
+                <option value="" disabled selected hidden></option>
+                <option value="edu-model">Edu Model</option>
+                <option value="decor">Decor</option>
+                <option value="cosmetics">Cosmetics</option>
+                <option value="customize">Customize Myself</option>
+              </select>
+              <label for="category">Product Category</label>
+            </div>
+
+            <div class="form-group">
+              <input type="file" id="file" />
+              <label for="file">Upload Design (optional)</label>
+            </div>
+
+            <div class="form-group form-span">
+              <textarea id="message" rows="4" placeholder=" "></textarea>
+              <label for="message">Describe your request…</label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-send">Send Request</button>
+            <div id="formStatus" class="form-status"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- Facts Start -->
+    <section class="facts-section" id="facts">
+      <div class="facts-bg">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row facts-row">
+            <div class="col-sm-6 col-lg-6 fact wow" data-target="200">
+              <h2 class="fact-number">0</h2>
+              <p class="fact-label">Households Reached</p>
+            </div>
+            <div class="col-sm-6 col-lg-6 fact wow" data-target="350">
+              <h2 class="fact-number">0</h2>
+              <p class="fact-label">Completed Products</p>
+            </div>
+            <div class="col-sm-6 col-lg-6 fact wow" data-target="50">
+              <h2 class="fact-number">0</h2>
+              <p class="fact-label">Schools Impacted</p>
+            </div>
+            <div class="col-sm-6 col-lg-6 fact wow" data-target="5000">
+              <h2 class="fact-number">0</h2>
+              <p class="fact-label">Students Reached</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tms-section" id="testimonials">
+      <div class="tms-container">
+        <header class="tms-head">
+          <div class="tms-quote-badge" aria-hidden="true">“</div>
+          <h2 class="tms-title">What People Say</h2>
+          <p class="tms-sub">Real stories from partners, schools & makers</p>
+        </header>
+
+        <div class="tms-viewport" aria-label="Testimonials carousel">
+          <ol class="tms-track">
+            <!-- Testimonial 1 -->
+            <li class="tms-slide">
+              <figure class="tms-card">
+                <div class="tms-top">
+                  <!-- <img
+                    class="tms-avatar"
+                    src="https://i.pravatar.cc/120?img=12"
+                    alt="Photo of Amina K."
+                  /> -->
+                  <div>
+                    <h3 class="tms-name">Amina K.</h3>
+                    <p class="tms-role">STEM Teacher • Nairobi</p>
+                  </div>
+                  <!-- <div class="tms-stars" aria-label="5 out of 5 stars">
+                    ★★★★★
+                  </div> -->
+                </div>
+                <blockquote class="tms-quote">
+                  EcoPrint’s models turned theory into touch. My students
+                  finally “get” complex topics—and they love it.
+                </blockquote>
+                <figcaption class="tms-meta">
+                  Used in Grade 7 science • Filament: Recycled PLA
+                </figcaption>
+              </figure>
+            </li>
+
+            <!-- Testimonial 2 -->
+            <li class="tms-slide">
+              <figure class="tms-card">
+                <div class="tms-top">
+                  <!-- <img
+                    class="tms-avatar"
+                    src="https://i.pravatar.cc/120?img=32"
+                    alt="Photo of Brian M."
+                  /> -->
+                  <div>
+                    <h3 class="tms-name">Brian M.</h3>
+                    <p class="tms-role">Makerspace Lead • Mombasa</p>
+                  </div>
+                  <!-- <div class="tms-stars" aria-label="5 out of 5 stars">
+                    ★★★★★
+                  </div> -->
+                </div>
+                <blockquote class="tms-quote">
+                  The filament quality surprised us—consistent diameter, smooth
+                  prints, and a story our members are proud to back.
+                </blockquote>
+                <figcaption class="tms-meta">
+                  200+ hours printed • <span>Zero jams</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <!-- Testimonial 3 -->
+            <li class="tms-slide">
+              <figure class="tms-card">
+                <div class="tms-top">
+                  <!-- <img
+                    class="tms-avatar"
+                    src="https://i.pravatar.cc/120?img=5"
+                    alt="Photo of Ruth N."
+                  /> -->
+                  <div>
+                    <h3 class="tms-name">Ruth N.</h3>
+                    <p class="tms-role">School Administrator • Kisumu</p>
+                  </div>
+                  <!-- <div class="tms-stars" aria-label="4.5 out of 5 stars">
+                    ★★★★☆
+                  </div> -->
+                </div>
+                <blockquote class="tms-quote">
+                  Ordering was easy, delivery was fast, and support was real.
+                  Our labs feel modern and alive.
+                </blockquote>
+                <figcaption class="tms-meta">
+                  Bundle: Human Anatomy Set + Circuits Kit
+                </figcaption>
+              </figure>
+            </li>
+
+            <!-- Testimonial 4 -->
+            <li class="tms-slide">
+              <figure class="tms-card">
+                <div class="tms-top">
+                  <!-- <img
+                    class="tms-avatar"
+                    src="https://i.pravatar.cc/120?img=67"
+                    alt="Photo of David O."
+                  /> -->
+                  <div>
+                    <h3 class="tms-name">David O.</h3>
+                    <p class="tms-role">Parent • Thika</p>
+                  </div>
+                  <!-- <div class="tms-stars" aria-label="5 out of 5 stars">
+                    ★★★★★
+                  </div> -->
+                </div>
+                <blockquote class="tms-quote">
+                  My daughter prints at home now. She’s obsessed—and learning
+                  faster than ever, sustainably.
+                </blockquote>
+                <figcaption class="tms-meta">
+                  Home EDU bundle • Weekend workshops
+                </figcaption>
+              </figure>
+            </li>
+          </ol>
+
+          <!-- Controls -->
+          <button class="tms-nav tms-prev" aria-label="Previous">‹</button>
+          <button class="tms-nav tms-next" aria-label="Next">›</button>
+
+          <!-- Dots -->
+          <div
+            class="tms-dots"
+            role="tablist"
+            aria-label="Select testimonial slide"
+          >
+            <button
+              class="tms-dot is-active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="tms-slide-1"
+            ></button>
+            <button
+              class="tms-dot"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tms-slide-2"
+            ></button>
+            <button
+              class="tms-dot"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tms-slide-3"
+            ></button>
+            <button
+              class="tms-dot"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tms-slide-4"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pl-section" id="partners">
+      <div class="pl-heading">
+        <h2>Our Supporters</h2>
+      </div>
+
+      <!-- <div class="support">
+        <div>Supporter one</div>
+        <div>Supporter two</div>
+        <div>Supporter three</div>
+        <div>Supporter four</div>
+      </div> -->
+      <div class="support">
+        <div class="supporter-card">
+          <div class="supporter-logo">
+            <img src="img/ctg.png" alt="Partner 1" />
+          </div>
+          
+        </div>
+        <div class="supporter-card">
+          <div class="supporter-logo">
+            <img src="img/Infitech logo.png" alt="Partner 2" />
+          </div>
+         
+        </div>
+        
+
+      <!-- Row 1 -->
+      <!-- <div class="pl-viewport">
+        <ul class="pl-track" data-speed="120">
+          <li class="pl-item">
+            <a href="#"><img src="img/ctg.png" alt="Partner 1" /></a>
+          </li>
+          <li class="pl-item">
+            <a href="#"><img src="img/Infitech logo.png" alt="Partner 2" /></a>
+          </li>
+          <li class="pl-item">
+            <a href="#"
+              ><img
+                src="https://dummyimage.com/160x64/eeeeee/111111&text=Logo+3"
+                alt="Partner 3"
+            /></a>
+          </li>
+          <li class="pl-item">
+            <a href="#"
+              ><img
+                src="https://dummyimage.com/160x64/eeeeee/111111&text=Logo+4"
+                alt="Partner 4"
+            /></a>
+          </li>
+          <li class="pl-item">
+            <a href="#"
+              ><img
+                src="https://dummyimage.com/160x64/eeeeee/111111&text=Logo+5"
+                alt="Partner 5"
+            /></a>
+          </li>
+          <li class="pl-item">
+            <a href="#"
+              ><img
+                src="https://dummyimage.com/160x64/eeeeee/111111&text=Logo+6"
+                alt="Partner 6"
+            /></a>
+          </li>
+        </ul>
+      </div> -->
+
+      <!-- Row 2 (counter-scroll) -->
+      <!-- <div class="pl-viewport pl-alt">
+        <ul class="pl-track" data-speed="100" data-direction="reverse">
+          <li class="pl-item">
+            <a href="#"
+              ><img
+                src="https://dummyimage.com/160x64/eeeeee/111111&text=Logo+A"
+                alt="Partner A"
+            /></a>
+          </li>
+          <li class="pl-item">
+            <a href="#"
+              ><img
+                src="https://dummyimage.com/160x64/eeeeee/111111&text=Logo+B"
+                alt="Partner B"
+            /></a>
+          </li>
+          <li class="pl-item">
+            <a href="#"
+              ><img
+                src="https://dummyimage.com/160x64/eeeeee/111111&text=Logo+C"
+                alt="Partner C"
+            /></a>
+          </li>
+          <li class="pl-item">
+            <a href="#"
+              ><img
+                src="https://dummyimage.com/160x64/eeeeee/111111&text=Logo+D"
+                alt="Partner D"
+            /></a>
+          </li>
+          <li class="pl-item">
+            <a href="#"
+              ><img
+                src="https://dummyimage.com/160x64/eeeeee/111111&text=Logo+E"
+                alt="Partner E"
+            /></a>
+          </li>
+          <li class="pl-item">
+            <a href="#"
+              ><img
+                src="https://dummyimage.com/160x64/eeeeee/111111&text=Logo+F"
+                alt="Partner F"
+            /></a>
+          </li>
+        </ul>
+      </div> -->
+    </section>
+
+    <footer class="creative-footer">
+      <!-- Decorative floating shapes -->
+      <div class="floating-shape shape1"></div>
+      <div class="floating-shape shape2"></div>
+      <div class="floating-shape shape3"></div>
+
+      <!-- Footer wave -->
+      <div class="footer-wave"></div>
+
+      <div class="footer-content">
+        <!-- Branding -->
+        <div class="footer-branding">
+          <h2>EcoPrint</h2>
+          <p>
+            Turning plastic into learning.<br />Empowering communities, one
+            model at a time.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-nav">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><img src="facebook.svg" alt="Facebook" /></a>
+            <a href="#"><img src="twitter.svg" alt="Twitter" /></a>
+            <a href="#"><img src="instagram.svg" alt="Instagram" /></a>
+            <a href="#"><img src="linkedin.svg" alt="LinkedIn" /></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 EcoPrint. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="facts.js"></script>
+    <link rel="stylesheet" href="facts.css" />
+
+    <script src="contact.js"></script>
+    <link rel="stylesheet" href="contact.css" />
+
+    <script src="script.js"></script>
+  </body>
+</html>

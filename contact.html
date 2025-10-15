@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - EcoPrint</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="brand">
+          <img src="img/Ecoprint Logo 3.png" alt="Logo" class="logo" />
+        </a>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link"
+              >Services <i class="fas fa-chevron-down"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Vertical Farming</a></li>
+              <li><a href="#">Grow Bags</a></li>
+              <li><a href="#">Living Walls</a></li>
+            </ul>
+          </li>
+          <li><a href="shop.html" class="nav-link">Shop</a></li>
+          <li><a href="#" class="nav-link">Projects</a></li>
+          <li><a href="#" class="nav-link">Donate</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+    <section class="contact-page">
+      <div class="container">
+        <!-- Hero -->
+        <div class="contact-hero">
+          <h1>Let's Connect</h1>
+          <p>
+            Reach out to us for partnerships, collaborations, or just a friendly
+            hello! We love hearing from you.
+          </p>
+        </div>
+
+        <!-- Contact Grid -->
+        <div class="contact-grid">
+          <!-- Form -->
+          <div class="contact-form-container">
+            <h2>Contact Us</h2>
+            <p>Fill out the form below and we'll get back to you soon.</p>
+            <form id="contactForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <input type="text" id="name" placeholder=" " required />
+                  <label for="name">Full Name</label>
+                </div>
+                <div class="form-group">
+                  <input type="email" id="email" placeholder=" " required />
+                  <label for="email">Email Address</label>
+                </div>
+                <div class="form-group">
+                  <input type="tel" id="phone" placeholder=" " required />
+                  <label for="phone">Phone Number</label>
+                </div>
+                <div class="form-group">
+                  <textarea id="message" rows="5" placeholder=" "></textarea>
+                  <label for="message">Enquiry</label>
+                </div>
+              </div>
+              <button type="submit" class="btn-submit">Send Message</button>
+              <div id="formStatus" class="form-status"></div>
+            </form>
+
+            <!-- Social Media -->
+            <div class="contact-social-wrapper">
+              <div class="contact-social">
+                <a href="#" class="social-icon"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" class="social-icon"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#" class="social-icon"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" class="social-icon"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="contact-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.123456789!2d39.6746!3d-4.0435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18401d23b2345678%3A0x123456789abcdef!2sMombasa!5e0!3m2!1sen!2ske!4v1690000000000"
+              allowfullscreen=""
+              loading="lazy"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="creative-footer">
+      <!-- Decorative floating shapes -->
+      <div class="floating-shape shape1"></div>
+      <div class="floating-shape shape2"></div>
+      <div class="floating-shape shape3"></div>
+
+      <!-- Footer wave -->
+      <div class="footer-wave"></div>
+
+      <div class="footer-content">
+        <!-- Branding -->
+        <div class="footer-branding">
+          <h2>EcoPrint</h2>
+          <p>
+            Turning plastic into learning.<br />Empowering communities, one
+            model at a time.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-nav">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><img src="facebook.svg" alt="Facebook" /></a>
+            <a href="#"><img src="twitter.svg" alt="Twitter" /></a>
+            <a href="#"><img src="instagram.svg" alt="Instagram" /></a>
+            <a href="#"><img src="linkedin.svg" alt="LinkedIn" /></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 EcoPrint. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

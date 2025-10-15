@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="brand">
+          <img src="img/Ecoprint Logo 3.png" alt="Logo" class="logo" />
+        </a>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link"
+              >Services <i class="fas fa-chevron-down"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Vertical Farming</a></li>
+              <li><a href="#">Grow Bags</a></li>
+              <li><a href="#">Living Walls</a></li>
+            </ul>
+          </li>
+          <li><a href="shop.html" class="nav-link">Shop</a></li>
+          <li><a href="#" class="nav-link">Projects</a></li>
+          <li><a href="#" class="nav-link">Donate</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+    <section class="shop">
+      <div class="shop-grid">
+        <!-- HERO -->
+        <article
+          class="card card--hero"
+          style="
+            --img: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop');
+          "
+          aria-label="We Are Hexashop"
+        >
+          <div class="card__inner">
+            <div class="card__title-block">
+              <h2 class="card__title card__title--xl">We Are Hexashop</h2>
+              <p class="card__subtitle">
+                Awesome, clean &amp; creative HTML5 Template
+              </p>
+              <a href="#" class="btn">Purchase Now!</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- WOMEN -->
+        <article
+          class="card"
+          style="
+            --img: url('https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?q=80&w=1400&auto=format&fit=crop');
+          "
+          aria-label="Women"
+        >
+          <div class="card__inner">
+            <h3 class="badge">Women</h3>
+            <div class="hover">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit incid.
+              </p>
+              <a href="#" class="btn btn--ghost">Discover More</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- MEN -->
+        <article
+          class="card"
+          style="
+            --img: url('https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=1400&auto=format&fit=crop');
+          "
+          aria-label="Men"
+        >
+          <div class="card__inner">
+            <h3 class="badge">Men</h3>
+            <div class="hover">
+              <p>Best clothes for men. New arrivals, essentials, and suits.</p>
+              <a href="#" class="btn btn--ghost">Discover More</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- KIDS -->
+        <article
+          class="card"
+          style="
+            --img: url('https://images.unsplash.com/photo-1503919545889-aef636e10ad4?q=80&w=1400&auto=format&fit=crop');
+          "
+          aria-label="Kids"
+        >
+          <div class="card__inner">
+            <h3 class="badge">Kids</h3>
+            <div class="hover">
+              <p>Best clothes for kids. Soft fabrics and playful fits.</p>
+              <a href="#" class="btn btn--ghost">Discover More</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ACCESSORIES -->
+        <article
+          class="card"
+          style="
+            --img: url('https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?q=80&w=1400&auto=format&fit=crop');
+          "
+          aria-label="Accessories"
+        >
+          <div class="card__inner">
+            <h3 class="badge">Accessories</h3>
+            <div class="hover">
+              <p>Best trend accessories to finish every look.</p>
+              <a href="#" class="btn btn--ghost">Discover More</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!--Shop Carousel-->
+    <!-- **************************
+       MEN'S LATEST – HORIZONTAL CAROUSEL
+  *************************** -->
+    <!-- MEN -->
+    <section class="section shop-latest" aria-label="Men's Latest">
+      <div class="latest-head">
+        <h2 style="text-align: center">Men’s Latest</h2>
+        <p class="muted" style="text-align: center">
+          Details to details is what makes Hexashop different from the other
+          themes.
+        </p>
+      </div>
+
+      <div class="carousel" data-category="men">
+        <button class="nav prev" type="button" aria-label="Previous">
+          <span>&larr;</span>
+        </button>
+
+        <div class="track">
+          <article
+            class="card"
+            data-product='{"name":"Camo Jacket Set","price":4200,"id":"M-001"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Camo Jacket Set</h3>
+              <div class="meta"><span class="price">KES 4,200</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Urban Black Tee","price":1800,"id":"M-002"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Urban Black Tee</h3>
+              <div class="meta"><span class="price">KES 1,800</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Denim Ripped Jeans","price":3500,"id":"M-003"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1503342394128-c104d54dba01?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Denim Ripped Jeans</h3>
+              <div class="meta"><span class="price">KES 3,500</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"White Court Sneakers","price":5200,"id":"M-004"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1542293787938-c9e299b88054?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">White Court Sneakers</h3>
+              <div class="meta"><span class="price">KES 5,200</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Olive Bomber","price":4800,"id":"M-005"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Olive Bomber</h3>
+              <div class="meta"><span class="price">KES 4,800</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+        </div>
+
+        <button class="nav next" type="button" aria-label="Next">
+          <span>&rarr;</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- WOMEN -->
+    <section class="section shop-latest" aria-label="Men's Latest">
+      <div class="latest-head">
+        <h2 style="text-align: center">Men’s Latest</h2>
+        <p class="muted" style="text-align: center">
+          Details to details is what makes Hexashop different from the other
+          themes.
+        </p>
+      </div>
+
+      <div class="carousel" data-category="men">
+        <button class="nav prev" type="button" aria-label="Previous">
+          <span>&larr;</span>
+        </button>
+
+        <div class="track">
+          <article
+            class="card"
+            data-product='{"name":"Camo Jacket Set","price":4200,"id":"M-001"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Camo Jacket Set</h3>
+              <div class="meta"><span class="price">KES 4,200</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Urban Black Tee","price":1800,"id":"M-002"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Urban Black Tee</h3>
+              <div class="meta"><span class="price">KES 1,800</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Denim Ripped Jeans","price":3500,"id":"M-003"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1503342394128-c104d54dba01?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Denim Ripped Jeans</h3>
+              <div class="meta"><span class="price">KES 3,500</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"White Court Sneakers","price":5200,"id":"M-004"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1542293787938-c9e299b88054?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">White Court Sneakers</h3>
+              <div class="meta"><span class="price">KES 5,200</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Olive Bomber","price":4800,"id":"M-005"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Olive Bomber</h3>
+              <div class="meta"><span class="price">KES 4,800</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+        </div>
+
+        <button class="nav next" type="button" aria-label="Next">
+          <span>&rarr;</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- KIDS -->
+    <section class="section shop-latest" aria-label="Men's Latest">
+      <div class="latest-head">
+        <h2 style="text-align: center">Men’s Latest</h2>
+        <p class="muted" style="text-align: center">
+          Details to details is what makes Hexashop different from the other
+          themes.
+        </p>
+      </div>
+
+      <div class="carousel" data-category="men">
+        <button class="nav prev" type="button" aria-label="Previous">
+          <span>&larr;</span>
+        </button>
+
+        <div class="track">
+          <article
+            class="card"
+            data-product='{"name":"Camo Jacket Set","price":4200,"id":"M-001"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Camo Jacket Set</h3>
+              <div class="meta"><span class="price">KES 4,200</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Urban Black Tee","price":1800,"id":"M-002"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Urban Black Tee</h3>
+              <div class="meta"><span class="price">KES 1,800</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Denim Ripped Jeans","price":3500,"id":"M-003"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1503342394128-c104d54dba01?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Denim Ripped Jeans</h3>
+              <div class="meta"><span class="price">KES 3,500</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"White Court Sneakers","price":5200,"id":"M-004"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1542293787938-c9e299b88054?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">White Court Sneakers</h3>
+              <div class="meta"><span class="price">KES 5,200</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Olive Bomber","price":4800,"id":"M-005"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Olive Bomber</h3>
+              <div class="meta"><span class="price">KES 4,800</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+        </div>
+
+        <button class="nav next" type="button" aria-label="Next">
+          <span>&rarr;</span>
+        </button>
+      </div>
+    </section>
+    <!-- ACCESSORIES -->
+    <section class="section shop-latest" aria-label="Men's Latest">
+      <div class="latest-head">
+        <h2 style="text-align: center">Men’s Latest</h2>
+        <p class="muted" style="text-align: center">
+          Details to details is what makes Hexashop different from the other
+          themes.
+        </p>
+      </div>
+
+      <div class="carousel" data-category="men">
+        <button class="nav prev" type="button" aria-label="Previous">
+          <span>&larr;</span>
+        </button>
+
+        <div class="track">
+          <article
+            class="card"
+            data-product='{"name":"Camo Jacket Set","price":4200,"id":"M-001"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Camo Jacket Set</h3>
+              <div class="meta"><span class="price">KES 4,200</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Urban Black Tee","price":1800,"id":"M-002"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Urban Black Tee</h3>
+              <div class="meta"><span class="price">KES 1,800</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Denim Ripped Jeans","price":3500,"id":"M-003"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1503342394128-c104d54dba01?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Denim Ripped Jeans</h3>
+              <div class="meta"><span class="price">KES 3,500</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"White Court Sneakers","price":5200,"id":"M-004"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1542293787938-c9e299b88054?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">White Court Sneakers</h3>
+              <div class="meta"><span class="price">KES 5,200</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+
+          <article
+            class="card"
+            data-product='{"name":"Olive Bomber","price":4800,"id":"M-005"}'
+          >
+            <div
+              class="img"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop);
+              "
+            ></div>
+            <div class="product-info">
+              <h3 class="product-title">Olive Bomber</h3>
+              <div class="meta"><span class="price">KES 4,800</span></div>
+              <a class="buy" target="_blank" rel="noopener">Buy on WhatsApp</a>
+            </div>
+          </article>
+        </div>
+
+        <button class="nav next" type="button" aria-label="Next">
+          <span>&rarr;</span>
+        </button>
+      </div>
+    </section>
+    <!--Contact-->
+    <section class="contact-section" id="contact-order">
+      <div class="contact-wrapper">
+        <header class="contact-header">
+          <h2 class="animate-title">Request a Quote / Custom Order</h2>
+          <p class="animate-subtitle">
+            Tell us what you need—materials, sizes, quantities—and optionally
+            attach a design.
+          </p>
+        </header>
+
+        <form id="orderForm" class="contact-form" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <input type="text" id="name" placeholder=" " required />
+              <label for="name">Full Name</label>
+            </div>
+
+            <div class="form-group">
+              <input type="email" id="email" placeholder=" " required />
+              <label for="email">Email Address</label>
+            </div>
+
+            <div class="form-group select-group">
+              <select id="category" required>
+                <option value="" disabled selected hidden></option>
+                <option value="edu-model">Edu Model</option>
+                <option value="decor">Decor</option>
+                <option value="cosmetics">Cosmetics</option>
+                <option value="customize">Customize Myself</option>
+              </select>
+              <label for="category">Product Category</label>
+            </div>
+
+            <div class="form-group">
+              <input type="file" id="file" />
+              <label for="file">Upload Design (optional)</label>
+            </div>
+
+            <div class="form-group form-span">
+              <textarea id="message" rows="4" placeholder=" "></textarea>
+              <label for="message">Describe your request…</label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-send">Send Request</button>
+            <div id="formStatus" class="form-status"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <footer class="creative-footer">
+      <!-- Decorative floating shapes -->
+      <div class="floating-shape shape1"></div>
+      <div class="floating-shape shape2"></div>
+      <div class="floating-shape shape3"></div>
+
+      <section class="tms-section" id="testimonials">
+        <div class="tms-container">
+          <header class="tms-head">
+            <div class="tms-quote-badge" aria-hidden="true">“</div>
+            <h2 class="tms-title">What People Say</h2>
+            <p class="tms-sub">Real stories from partners, schools & makers</p>
+          </header>
+
+          <div class="tms-viewport" aria-label="Testimonials carousel">
+            <ol class="tms-track">
+              <!-- Testimonial 1 -->
+              <li class="tms-slide">
+                <figure class="tms-card">
+                  <div class="tms-top">
+                    <!-- <img
+                      class="tms-avatar"
+                      src="https://i.pravatar.cc/120?img=12"
+                      alt="Photo of Amina K."
+                    /> -->
+                    <div>
+                      <h3 class="tms-name">Amina K.</h3>
+                      <p class="tms-role">STEM Teacher • Nairobi</p>
+                    </div>
+                    <!-- <div class="tms-stars" aria-label="5 out of 5 stars">
+                      ★★★★★
+                    </div> -->
+                  </div>
+                  <blockquote class="tms-quote">
+                    EcoPrint’s models turned theory into touch. My students
+                    finally “get” complex topics—and they love it.
+                  </blockquote>
+                  <figcaption class="tms-meta">
+                    Used in Grade 7 science • Filament: Recycled PLA
+                  </figcaption>
+                </figure>
+              </li>
+
+              <!-- Testimonial 2 -->
+              <li class="tms-slide">
+                <figure class="tms-card">
+                  <div class="tms-top">
+                    <!-- <img
+                      class="tms-avatar"
+                      src="https://i.pravatar.cc/120?img=32"
+                      alt="Photo of Brian M."
+                    /> -->
+                    <div>
+                      <h3 class="tms-name">Brian M.</h3>
+                      <p class="tms-role">Makerspace Lead • Mombasa</p>
+                    </div>
+                    <!-- <div class="tms-stars" aria-label="5 out of 5 stars">
+                      ★★★★★
+                    </div> -->
+                  </div>
+                  <blockquote class="tms-quote">
+                    The filament quality surprised us—consistent diameter,
+                    smooth prints, and a story our members are proud to back.
+                  </blockquote>
+                  <figcaption class="tms-meta">
+                    200+ hours printed • <span>Zero jams</span>
+                  </figcaption>
+                </figure>
+              </li>
+
+              <!-- Testimonial 3 -->
+              <li class="tms-slide">
+                <figure class="tms-card">
+                  <div class="tms-top">
+                    <!-- <img
+                      class="tms-avatar"
+                      src="https://i.pravatar.cc/120?img=5"
+                      alt="Photo of Ruth N."
+                    /> -->
+                    <div>
+                      <h3 class="tms-name">Ruth N.</h3>
+                      <p class="tms-role">School Administrator • Kisumu</p>
+                    </div>
+                    <!-- <div class="tms-stars" aria-label="4.5 out of 5 stars">
+                      ★★★★☆
+                    </div> -->
+                  </div>
+                  <blockquote class="tms-quote">
+                    Ordering was easy, delivery was fast, and support was real.
+                    Our labs feel modern and alive.
+                  </blockquote>
+                  <figcaption class="tms-meta">
+                    Bundle: Human Anatomy Set + Circuits Kit
+                  </figcaption>
+                </figure>
+              </li>
+
+              <!-- Testimonial 4 -->
+              <li class="tms-slide">
+                <figure class="tms-card">
+                  <div class="tms-top">
+                    <!-- <img
+                      class="tms-avatar"
+                      src="https://i.pravatar.cc/120?img=67"
+                      alt="Photo of David O."
+                    /> -->
+                    <div>
+                      <h3 class="tms-name">David O.</h3>
+                      <p class="tms-role">Parent • Thika</p>
+                    </div>
+                    <!-- <div class="tms-stars" aria-label="5 out of 5 stars">
+                      ★★★★★
+                    </div> -->
+                  </div>
+                  <blockquote class="tms-quote">
+                    My daughter prints at home now. She’s obsessed—and learning
+                    faster than ever, sustainably.
+                  </blockquote>
+                  <figcaption class="tms-meta">
+                    Home EDU bundle • Weekend workshops
+                  </figcaption>
+                </figure>
+              </li>
+            </ol>
+
+            <!-- Controls -->
+            <button class="tms-nav tms-prev" aria-label="Previous">‹</button>
+            <button class="tms-nav tms-next" aria-label="Next">›</button>
+
+            <!-- Dots -->
+            <div
+              class="tms-dots"
+              role="tablist"
+              aria-label="Select testimonial slide"
+            >
+              <button
+                class="tms-dot is-active"
+                role="tab"
+                aria-selected="true"
+                aria-controls="tms-slide-1"
+              ></button>
+              <button
+                class="tms-dot"
+                role="tab"
+                aria-selected="false"
+                aria-controls="tms-slide-2"
+              ></button>
+              <button
+                class="tms-dot"
+                role="tab"
+                aria-selected="false"
+                aria-controls="tms-slide-3"
+              ></button>
+              <button
+                class="tms-dot"
+                role="tab"
+                aria-selected="false"
+                aria-controls="tms-slide-4"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer wave -->
+      <div class="footer-wave"></div>
+
+      <div class="footer-content">
+        <!-- Branding -->
+        <div class="footer-branding">
+          <h2>EcoPrint</h2>
+          <p>
+            Turning plastic into learning.<br />Empowering communities, one
+            model at a time.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-nav">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><img src="facebook.svg" alt="Facebook" /></a>
+            <a href="#"><img src="twitter.svg" alt="Twitter" /></a>
+            <a href="#"><img src="instagram.svg" alt="Instagram" /></a>
+            <a href="#"><img src="linkedin.svg" alt="LinkedIn" /></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 EcoPrint. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <!-- <script type="module" src="script.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@motionone/dom/dist/motion-one.umd.min.js"></script> -->
+    <script src="script.js"></script>
+  </body>
+</html>
