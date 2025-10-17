@@ -211,6 +211,58 @@ form.addEventListener("submit", (e) => {
   }, 1200);
 });
 
+//Process Section
+
+(() => {
+  const track = document.querySelector(".pq-trackcards");
+  const fill = document.querySelector(".pq-progress");
+  const btns = document.querySelectorAll(".pq-btn");
+  const steps = document.querySelectorAll(".pq-step");
+
+  let current = 0;
+  const total = steps.length;
+
+  function updateProgress() {
+    const progress = current / (total - 1);
+    fill.style.strokeDashoffset = 1800 * (1 - progress);
+    steps.forEach((step, i) => {
+      step.classList.toggle("active", i === current);
+    });
+  }
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // step width = first card’s full width (including gap)
+      const stepWidth =
+        steps[0].offsetWidth + parseInt(getComputedStyle(track).gap || 0);
+
+      if (btn.dataset.dir === "next") {
+        if (current < total - 1) current++;
+      } else {
+        if (current > 0) current--;
+      }
+
+      // scroll to the correct position
+      track.scrollTo({
+        left: stepWidth * current,
+        behavior: "smooth",
+      });
+
+      updateProgress();
+    });
+  });
+
+  track.addEventListener("scroll", () => {
+    const scrollPos = track.scrollLeft;
+    const stepWidth =
+      steps[0].offsetWidth + parseInt(getComputedStyle(track).gap || 0);
+    current = Math.round(scrollPos / stepWidth);
+    updateProgress();
+  });
+
+  updateProgress();
+})();
+
 // shop.html section
 
 // ===== Hexashop-like carousel (no external libs) =====
@@ -432,57 +484,6 @@ document.querySelector(".tf-viewport").addEventListener("mouseleave", () => {
   document.addEventListener("keydown", (e) => {
     if (!modal.hidden && e.key === "Escape") closeModal();
   });
-})();
-//Process Section
-
-(() => {
-  const track = document.querySelector(".pq-trackcards");
-  const fill = document.querySelector(".pq-progress");
-  const btns = document.querySelectorAll(".pq-btn");
-  const steps = document.querySelectorAll(".pq-step");
-
-  let current = 0;
-  const total = steps.length;
-
-  function updateProgress() {
-    const progress = current / (total - 1);
-    fill.style.strokeDashoffset = 1800 * (1 - progress);
-    steps.forEach((step, i) => {
-      step.classList.toggle("active", i === current);
-    });
-  }
-
-  btns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      // step width = first card’s full width (including gap)
-      const stepWidth =
-        steps[0].offsetWidth + parseInt(getComputedStyle(track).gap || 0);
-
-      if (btn.dataset.dir === "next") {
-        if (current < total - 1) current++;
-      } else {
-        if (current > 0) current--;
-      }
-
-      // scroll to the correct position
-      track.scrollTo({
-        left: stepWidth * current,
-        behavior: "smooth",
-      });
-
-      updateProgress();
-    });
-  });
-
-  track.addEventListener("scroll", () => {
-    const scrollPos = track.scrollLeft;
-    const stepWidth =
-      steps[0].offsetWidth + parseInt(getComputedStyle(track).gap || 0);
-    current = Math.round(scrollPos / stepWidth);
-    updateProgress();
-  });
-
-  updateProgress();
 })();
 
 //Shop Section
