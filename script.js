@@ -263,6 +263,48 @@ form.addEventListener("submit", (e) => {
   updateProgress();
 })();
 
+// video and Article Section
+// // video and Article Section
+// document.addEventListener("DOMContentLoaded", () => {
+//   const scrollContainers = document.querySelectorAll(".scroll-container");
+//   scrollContainers.forEach((container) => {
+//     const grid = container.querySelector(".video-grid");
+//     const leftBtn = container.querySelector(".scroll-btn.left");
+//     const rightBtn = container.querySelector(".scroll-btn.right");
+
+//     if (!grid) return; // nothing to scroll
+
+//     // make scroll amount responsive to container width
+//     const getScrollAmount = () =>
+//       Math.max(280, Math.floor(container.clientWidth * 0.7));
+
+//     // click handlers (guard buttons)
+//     if (leftBtn) {
+//       leftBtn.addEventListener("click", () => {
+//         grid.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+//       });
+//     }
+//     if (rightBtn) {
+//       rightBtn.addEventListener("click", () => {
+//         grid.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+//       });
+//     }
+
+//     // allow keyboard navigation when container receives focus
+//     container.setAttribute("tabindex", "0");
+//     container.addEventListener("keydown", (e) => {
+//       if (e.key === "ArrowLeft") {
+//         e.preventDefault();
+//         grid.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+//       } else if (e.key === "ArrowRight") {
+//         e.preventDefault();
+//         grid.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+//       }
+//     });
+//   });
+// });
+ 
+
 // shop.html section
 
 // ===== Hexashop-like carousel (no external libs) =====
@@ -386,44 +428,86 @@ Please share availability and size options.`;
 });
 
 // Auto-scroll carousel
-const track = document.querySelector(".tf-track");
-let scrollAmount = 0;
-let scrollStep = 1; // pixels per interval
-let maxScroll = track.scrollWidth - track.clientWidth;
+// const track = document.querySelector(".tf-track");
+// let scrollAmount = 0;
+// let scrollStep = 1; // pixels per interval
+// let maxScroll = track.scrollWidth - track.clientWidth;
 
-function autoScroll() {
-  scrollAmount += scrollStep;
-  if (scrollAmount >= maxScroll) scrollAmount = 0;
-  track.scrollTo({ left: scrollAmount, behavior: "smooth" });
+// function autoScroll() {
+//   scrollAmount += scrollStep;
+//   if (scrollAmount >= maxScroll) scrollAmount = 0;
+//   track.scrollTo({ left: scrollAmount, behavior: "smooth" });
+// }
+
+// setInterval(autoScroll, 20); // adjust speed here
+
+const tfAutoTrack = document.querySelector(".tf-track");
+let autoScrollAmount = 0;
+let autoScrollStep = 1; // pixels per interval
+if (tfAutoTrack) {
+  let autoMaxScroll = tfAutoTrack.scrollWidth - tfAutoTrack.clientWidth;
+  function autoScroll() {
+    autoMaxScroll = tfAutoTrack.scrollWidth - tfAutoTrack.clientWidth;
+    autoScrollAmount += autoScrollStep;
+    if (autoScrollAmount >= autoMaxScroll) autoScrollAmount = 0;
+    tfAutoTrack.scrollTo({ left: autoScrollAmount, behavior: "smooth" });
+  }
+  setInterval(autoScroll, 20);
 }
-
-setInterval(autoScroll, 20); // adjust speed here
 //Top Feature
-consttrack = document.querySelector(".tf-track");
+// consttrack = document.querySelector(".tf-track");
+// let scrollSpeed = 0.7; // pixels per frame
+// let position = 0;
+
+// function animate() {
+//   position -= scrollSpeed;
+
+//   // Reset position when half of the track width is scrolled (because we duplicated items)
+//   if (Math.abs(position) >= track.scrollWidth / 2) {
+//     position = 0;
+//   }
+
+//   track.style.transform = `translateX(${position}px)`;
+//   requestAnimationFrame(animate);
+// }
+
+// animate();
+
+// // Pause on hover
+// document.querySelector(".tf-viewport").addEventListener("mouseenter", () => {
+//   scrollSpeed = 0;
+// });
+// document.querySelector(".tf-viewport").addEventListener("mouseleave", () => {
+//   scrollSpeed = 0.5;
+// });
+
+const tfTrack = document.querySelector(".tf-track");
 let scrollSpeed = 0.7; // pixels per frame
 let position = 0;
 
 function animate() {
+  if (!tfTrack) return;
   position -= scrollSpeed;
-
   // Reset position when half of the track width is scrolled (because we duplicated items)
-  if (Math.abs(position) >= track.scrollWidth / 2) {
+  if (Math.abs(position) >= tfTrack.scrollWidth / 2) {
     position = 0;
   }
-
-  track.style.transform = `translateX(${position}px)`;
+  tfTrack.style.transform = `translateX(${position}px)`;
   requestAnimationFrame(animate);
 }
 
 animate();
 
-// Pause on hover
-document.querySelector(".tf-viewport").addEventListener("mouseenter", () => {
-  scrollSpeed = 0;
-});
-document.querySelector(".tf-viewport").addEventListener("mouseleave", () => {
-  scrollSpeed = 0.5;
-});
+// Pause on hover (guard)
+const tfViewport = document.querySelector(".tf-viewport");
+if (tfViewport) {
+  tfViewport.addEventListener("mouseenter", () => {
+    scrollSpeed = 0;
+  });
+  tfViewport.addEventListener("mouseleave", () => {
+    scrollSpeed = 0.5;
+  });
+}
 
 //About Section
 // About Video Modal + Scroll Animation
