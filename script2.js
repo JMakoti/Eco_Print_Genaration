@@ -34,14 +34,16 @@ if (hamburger && navMenu) {
   if (!section || !viewport || !track || slides.length === 0) return;
 
   let index = 0;
-  let autoEnabled = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let autoEnabled = !window.matchMedia("(prefers-reduced-motion: reduce)")
+    .matches;
   let autoTimer = null;
 
   const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
   function centerLeftFor(i) {
     const slide = slides[i];
-    const left = slide.offsetLeft - (viewport.clientWidth - slide.clientWidth) / 2;
+    const left =
+      slide.offsetLeft - (viewport.clientWidth - slide.clientWidth) / 2;
     const maxLeft = track.scrollWidth - viewport.clientWidth;
     return clamp(left, 0, Math.max(0, maxLeft));
   }
@@ -52,17 +54,24 @@ if (hamburger && navMenu) {
 
   function snapTo(i, smooth = true) {
     index = clamp(i, 0, slides.length - 1);
-    track.scrollTo({ left: centerLeftFor(index), behavior: smooth ? "smooth" : "auto" });
+    track.scrollTo({
+      left: centerLeftFor(index),
+      behavior: smooth ? "smooth" : "auto",
+    });
     setActiveDot(index);
   }
 
   function syncIndexFromScroll() {
     const center = track.scrollLeft + viewport.clientWidth / 2;
-    let best = 0, bestDist = Infinity;
+    let best = 0,
+      bestDist = Infinity;
     slides.forEach((s, i) => {
       const c = s.offsetLeft + s.clientWidth / 2;
       const d = Math.abs(c - center);
-      if (d < bestDist) { best = i; bestDist = d; }
+      if (d < bestDist) {
+        best = i;
+        bestDist = d;
+      }
     });
     if (best !== index) {
       index = best;
@@ -74,7 +83,9 @@ if (hamburger && navMenu) {
   nextBtn?.addEventListener("click", () => snapTo(index + 1));
   dots.forEach((dot, i) => dot.addEventListener("click", () => snapTo(i)));
 
-  let isDown = false, startX = 0, startLeft = 0;
+  let isDown = false,
+    startX = 0,
+    startLeft = 0;
   track.addEventListener("pointerdown", (e) => {
     isDown = true;
     startX = e.clientX;
@@ -87,12 +98,16 @@ if (hamburger && navMenu) {
     track.scrollLeft = startLeft - (e.clientX - startX);
     syncIndexFromScroll();
   });
-  window.addEventListener("pointerup", () => {
-    if (!isDown) return;
-    isDown = false;
-    track.style.scrollBehavior = "";
-    snapTo(index);
-  }, { passive: true });
+  window.addEventListener(
+    "pointerup",
+    () => {
+      if (!isDown) return;
+      isDown = false;
+      track.style.scrollBehavior = "";
+      snapTo(index);
+    },
+    { passive: true }
+  );
 
   track.addEventListener("scroll", syncIndexFromScroll, { passive: true });
   window.addEventListener("resize", () => snapTo(index, false));
@@ -111,14 +126,18 @@ if (hamburger && navMenu) {
   viewport.addEventListener("mouseleave", startAuto);
 
   ["pointerdown", "wheel", "keydown", "touchstart"].forEach((evt) => {
-    track.addEventListener(evt, () => {
-      autoEnabled = false;
-      stopAuto();
-    }, { once: true, passive: true });
+    track.addEventListener(
+      evt,
+      () => {
+        autoEnabled = false;
+        stopAuto();
+      },
+      { once: true, passive: true }
+    );
   });
 
   const vis = new IntersectionObserver(
-    (entries) => entries[0]?.isIntersecting ? startAuto() : stopAuto(),
+    (entries) => (entries[0]?.isIntersecting ? startAuto() : stopAuto()),
     { threshold: 0.25 }
   );
   vis.observe(section);
@@ -139,12 +158,15 @@ if (hamburger && navMenu) {
   let lastFocus = null;
 
   const observer = new IntersectionObserver(
-    (entries) => entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
-    }),
+    (entries) =>
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      }),
     { threshold: 0.2 }
   );
-  document.querySelectorAll(".about-card, .about-media").forEach((el) => observer.observe(el));
+  document
+    .querySelectorAll(".about-card, .about-media")
+    .forEach((el) => observer.observe(el));
 
   openBtn.addEventListener("click", () => {
     lastFocus = document.activeElement;
@@ -239,7 +261,8 @@ if (form && status) {
 
   btns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const stepWidth = steps[0].offsetWidth + parseInt(getComputedStyle(track).gap || 0);
+      const stepWidth =
+        steps[0].offsetWidth + parseInt(getComputedStyle(track).gap || 0);
       current += btn.dataset.dir === "next" ? 1 : -1;
       current = Math.max(0, Math.min(current, total - 1));
       track.scrollTo({ left: stepWidth * current, behavior: "smooth" });
@@ -249,7 +272,8 @@ if (form && status) {
 
   track.addEventListener("scroll", () => {
     const scrollPos = track.scrollLeft;
-    const stepWidth = steps[0].offsetWidth + parseInt(getComputedStyle(track).gap || 0);
+    const stepWidth =
+      steps[0].offsetWidth + parseInt(getComputedStyle(track).gap || 0);
     current = Math.round(scrollPos / stepWidth);
     updateProgress();
   });
@@ -273,7 +297,9 @@ document.addEventListener("DOMContentLoaded", () => {
 • Product: ${data.name}
 • ID: ${data.id || "-"}
 • Price: KES ${data.price || "-"}`;
-    btn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    btn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+      text
+    )}`;
     btn.target = "_blank";
     btn.rel = "noopener";
   });
@@ -405,7 +431,9 @@ document.addEventListener("DOMContentLoaded", () => {
   viewports.forEach((vp) => {
     const track = vp.querySelector(".pl-track");
     if (!track) return;
-    const baseItems = Array.from(track.children).map((el) => el.cloneNode(true));
+    const baseItems = Array.from(track.children).map((el) =>
+      el.cloneNode(true)
+    );
 
     function build() {
       track.replaceChildren(...baseItems.map((n) => n.cloneNode(true)));
@@ -426,7 +454,9 @@ document.addEventListener("DOMContentLoaded", () => {
       track._r = setTimeout(build, 150);
     });
 
-    let down = false, startX = 0, startTx = 0;
+    let down = false,
+      startX = 0,
+      startTx = 0;
     track.addEventListener("pointerdown", (e) => {
       down = true;
       startX = e.clientX;
@@ -439,12 +469,16 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!down) return;
       track.style.transform = `translateX(${startTx + (e.clientX - startX)}px)`;
     });
-    window.addEventListener("pointerup", () => {
-      if (!down) return;
-      down = false;
-      track.style.transform = "";
-      track.style.animationPlayState = "";
-    }, { passive: true });
+    window.addEventListener(
+      "pointerup",
+      () => {
+        if (!down) return;
+        down = false;
+        track.style.transform = "";
+        track.style.animationPlayState = "";
+      },
+      { passive: true }
+    );
   });
 })();
 
@@ -455,6 +489,26 @@ document.addEventListener("mousemove", (e) => {
   const shapes = document.querySelectorAll(".floating-shape");
   shapes.forEach((shape, i) => {
     const speed = (i + 1) * 0.05;
-    shape.style.transform = `translate(${e.clientX * speed}px, ${e.clientY * speed}px)`;
+    shape.style.transform = `translate(${e.clientX * speed}px, ${
+      e.clientY * speed
+    }px)`;
+  });
+});
+
+// ===================================================
+// Horizontal scroll for both Videos and Articles
+// ===================================================
+
+document.querySelectorAll(".scroll-wrapper").forEach((wrapper) => {
+  const track = wrapper.querySelector(".scroll-track");
+  const btnLeft = wrapper.querySelector(".scroll-btn.left");
+  const btnRight = wrapper.querySelector(".scroll-btn.right");
+
+  btnLeft.addEventListener("click", () => {
+    track.scrollBy({ left: -300, behavior: "smooth" });
+  });
+
+  btnRight.addEventListener("click", () => {
+    track.scrollBy({ left: 300, behavior: "smooth" });
   });
 });
