@@ -387,6 +387,14 @@ body {
   align-items: center;
   justify-content: center;
 }
+.about-grid-info {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: center;
+  justify-content: center;
+}
 
 .about-card {
   padding: 1rem 1.5rem;
@@ -3435,4 +3443,85 @@ img {
   .section-head-text {
     text-align: center;
   }
+}
+
+/* Vission Mission Css  */
+/* Mission & Vision Section */
+.mision-vision {
+  background: var(--white);
+  padding: clamp(2rem, 4.5vw, 5rem) 1rem;
+  overflow: hidden;
+}
+
+.about-grid-info2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: stretch;
+  justify-content: center;
+}
+
+/* Transparent, glowing cards */
+.about-card1 {
+  background: rgba(255, 255, 255, 0.1); /* Transparent glass-like look */
+  border: 1px solid rgba(0, 128, 96, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 180, 150, 0.25); /* Green–bluish shadow */
+  backdrop-filter: blur(10px); /* Glass effect */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.about-card1.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-card1:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 200, 180, 0.4);
+}
+
+/* Headings */
+.about-card1 .about-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--leaf), var(--forest));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Text & List */
+.about-card1 p {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.tick-list-vission {
+  list-style: none;
+  padding: 0;
+}
+
+.tick-list-vission li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.75rem;
+  color: var(--muted);
+}
+
+.tick-list-vission li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--leaf);
+  font-weight: bold;
+}
+
+.mission{
+  margin-bottom: 50px;
 }

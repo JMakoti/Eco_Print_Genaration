@@ -9,6 +9,8 @@
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
     ></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   </head>
   <body>
     <!-- Navbar Start -->
@@ -93,9 +95,105 @@
         </svg>
       </section>
 
-      <section class="about-info">About Info && History</section>
+      <!-- About Info && History -->
+      <!---About Section-->
+      <section class="about section-pad" id="about">
+        <div class="container">
+          <div class="about-grid-info">
+            <!-- Left block -->
+            <div class="about-card" data-animate="left">
+              <h2 class="about-title">Our Story</h2>
+              <p>
+                We transform plastic waste into affordable 3D-printing filaments
+                and classroom-ready STEM models—making hands-on learning
+                accessible while cleaning our environment.
+              </p>
+              <p>
+                From oceans and landfills to labs and schools, EcoPrint
+                Generation connects circular materials with real education
+                impact.
+              </p>
+            </div>
 
-      <section class="mision-vision">Mision and Vision</section>
+            <!-- Center image with play -->
+            <figure class="about-media" data-animate="up">
+              <img
+                src="img/school.jpeg"
+                alt="EcoPrint process splash"
+                loading="lazy"
+              />
+              <button
+                class="about-play"
+                type="button"
+                aria-label="Play video"
+                aria-haspopup="dialog"
+                aria-controls="about-video-modal"
+              >
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M8 5v14l11-7-11-7z" fill="currentColor" />
+                </svg>
+              </button>
+            </figure>
+      </section>
+
+      <!-- Video Modal -->
+      <div
+        class="modal"
+        id="about-video-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="EcoPrint video"
+        hidden
+      >
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-body" role="document">
+          <button
+            class="modal-close"
+            type="button"
+            aria-label="Close video"
+            data-close
+          >
+            &times;
+          </button>
+          <div class="video-wrap"></div>
+        </div>
+      </div>
+
+      <!-- Visson Mission Section -->
+      <section class="mision-vision">
+        <div class="about-grid-info2">
+        <div class="container">
+          <div class="mission">
+            <div class="about-card1"  data-animate="left">
+            <h2 class="about-title">Our Mision</h2>
+            <p>
+              EcoPrint Generation’s mission is to transform plastic waste into sustainable 3D printing materials that empower education, innovation, and environmental conservation—turning waste into opportunity for a cleaner, smarter, and more inclusive future.
+            </p>
+          </div>
+          </div>
+
+          <div class="vission">
+            <div class="about-card1" data-animate="right">
+            <h2 class="about-title">Our Vision</h2>
+            <p>
+              A continent where every learner can touch, see, and build science—
+              powered by sustainable materials and community innovation.
+            </p>
+            <ul class="tick-list-vission">
+              <li>Lower cost, higher access</li>
+              <li>Materials from recycled plastics</li>
+              <li>Practical STEM for real schools</li>
+            </ul>
+          </div>
+          </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Core values -->
       <section class="core-values">
@@ -822,10 +920,10 @@
         <div class="footer-social">
           <h3>Follow Us</h3>
           <div class="social-icons">
-            <a href="#"><img src="facebook.svg" alt="Facebook" /></a>
-            <a href="#"><img src="twitter.svg" alt="Twitter" /></a>
-            <a href="#"><img src="instagram.svg" alt="Instagram" /></a>
-            <a href="#"><img src="linkedin.svg" alt="LinkedIn" /></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
         </div>
       </div>
@@ -835,6 +933,6 @@
         <p>&copy; 2025 EcoPrint. All Rights Reserved.</p>
       </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="script2.js"></script>
   </body>
 </html>

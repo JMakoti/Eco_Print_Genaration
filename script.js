@@ -12,9 +12,14 @@ window.addEventListener("scroll", () => {
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("nav-menu");
 
-hamburger.addEventListener("click", () => {
-  navMenu.classList.toggle("show");
-});
+if (hamburger) {
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+}
+// hamburger.addEventListener("click", () => {
+//   navMenu.classList.toggle("show");
+// });
 
 // SHARED JS
 //Testimonial
@@ -165,6 +170,67 @@ hamburger.addEventListener("click", () => {
   snapTo(0, false);
 })();
 
+//About Section
+// About Video Modal + Scroll Animation
+(function () {
+  const openBtn = document.querySelector(".about-play");
+  const modal = document.getElementById("about-video-modal");
+  const wrap = modal.querySelector(".video-wrap");
+  const closeEls = modal.querySelectorAll("[data-close]");
+  let lastFocus = null;
+
+  // Scroll reveal animation
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  document
+    .querySelectorAll(".about-card, .about-media")
+    .forEach((el) => observer.observe(el));
+
+  // --- MODAL LOGIC ---
+
+  // Open modal
+  openBtn.addEventListener("click", () => {
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    wrap.innerHTML = `<iframe title="EcoPrint video"
+      src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0&playsinline=1&modestbranding=1"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>`;
+    document.body.style.overflow = "hidden";
+  });
+
+  // Close modal
+  function closeModal() {
+    modal.hidden = true;
+    wrap.innerHTML = ""; // clear video so it stops playing
+    document.body.style.overflow = "";
+    if (lastFocus) lastFocus.focus();
+  }
+
+  // Close on X and backdrop
+  closeEls.forEach((el) => el.addEventListener("click", closeModal));
+  modal.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal-backdrop")) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener("keydown", (e) => {
+    if (!modal.hidden && e.key === "Escape") closeModal();
+  });
+})();
+
 // CONTACT
 
 const form = document.getElementById("orderForm");
@@ -175,6 +241,7 @@ const subtitle = document.querySelector(".animate-subtitle");
 
 // Animate entrance like Framer Motion
 function animateForm() {
+  if (!title || !subtitle) return;
   title.classList.add("animate-show");
   subtitle.classList.add("animate-show");
   groups.forEach((el, i) => {
@@ -185,32 +252,33 @@ function animateForm() {
 }
 window.addEventListener("load", animateForm);
 
-// Form Submit
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const name = document.getElementById("name");
-  const email = document.getElementById("email");
-  const cat = document.getElementById("category");
+if (form) {
+  // Form Submit
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const cat = document.getElementById("category");
 
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
-  if (!name.value.trim() || !emailValid || !cat.value) {
-    status.textContent = "Please fill all required fields correctly!";
-    status.style.color = "red";
-    return;
-  }
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    if (!name.value.trim() || !emailValid || !cat.value) {
+      status.textContent = "Please fill all required fields correctly!";
+      status.style.color = "red";
+      return;
+    }
 
-  status.textContent = "Sending…";
-  status.style.color = "#2ca02c";
-  const btn = form.querySelector(".btn-send");
-  btn.disabled = true;
+    status.textContent = "Sending…";
+    status.style.color = "#2ca02c";
+    const btn = form.querySelector(".btn-send");
+    btn.disabled = true;
 
-  setTimeout(() => {
-    status.textContent = "Thanks! We've received your request.";
-    btn.disabled = false;
-    form.reset();
-  }, 1200);
-});
-
+    setTimeout(() => {
+      status.textContent = "Thanks! We've received your request.";
+      btn.disabled = false;
+      form.reset();
+    }, 1200);
+  });
+}
 //Process Section
 
 (() => {
@@ -303,7 +371,6 @@ form.addEventListener("submit", (e) => {
 //     });
 //   });
 // });
- 
 
 // shop.html section
 
@@ -332,98 +399,108 @@ Please share availability and size options.`;
   });
 
   // 3) Initialize each carousel independently.
-  document.querySelectorAll(".carousel").forEach((carousel) => {
-    const track = carousel.querySelector(".track");
-    const prev = carousel.querySelector(".nav.prev");
-    const next = carousel.querySelector(".nav.next");
-    if (!track || !prev || !next) return;
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousels = document.querySelectorAll(".carousel");
+    if (!carousels.length) return;
 
-    // Helper: get numeric gap between cards from CSS
-    const getGap = () => {
-      const cs = getComputedStyle(track);
-      // Some browsers expose 'columnGap', others just 'gap'
-      const gapStr = cs.columnGap || cs.gap || "0px";
-      const n = parseFloat(gapStr);
-      return Number.isFinite(n) ? n : 0;
-    };
+    carousels.forEach((carousel) => {
+      const track = carousel.querySelector(".track");
+      const prev = carousel.querySelector(".nav.prev");
+      const next = carousel.querySelector(".nav.next");
+      if (!track || !prev || !next) return;
+      // document.querySelectorAll(".carousel").forEach((carousel) => {
+      //   const track = carousel.querySelector(".track");
+      //   const prev = carousel.querySelector(".nav.prev");
+      //   const next = carousel.querySelector(".nav.next");
+      //   if (!track || !prev || !next) return;
 
-    // Helper: how far to move = width of one card + gap
-    const getStep = () => {
-      const card = track.querySelector(".card");
-      if (!card) return 300;
-      const w = card.getBoundingClientRect().width;
-      return w + getGap();
-    };
+      // Helper: get numeric gap between cards from CSS
+      const getGap = () => {
+        const cs = getComputedStyle(track);
+        // Some browsers expose 'columnGap', others just 'gap'
+        const gapStr = cs.columnGap || cs.gap || "0px";
+        const n = parseFloat(gapStr);
+        return Number.isFinite(n) ? n : 0;
+      };
 
-    // Update arrow disabled states
-    const updateDisabled = () => {
-      const max = track.scrollWidth - track.clientWidth - 1; // tolerance
-      prev.disabled = track.scrollLeft <= 0;
-      next.disabled = track.scrollLeft >= max;
-    };
+      // Helper: how far to move = width of one card + gap
+      const getStep = () => {
+        const card = track.querySelector(".card");
+        if (!card) return 300;
+        const w = card.getBoundingClientRect().width;
+        return w + getGap();
+      };
 
-    updateDisabled();
+      // Update arrow disabled states
+      const updateDisabled = () => {
+        const max = track.scrollWidth - track.clientWidth - 1; // tolerance
+        prev.disabled = track.scrollLeft <= 0;
+        next.disabled = track.scrollLeft >= max;
+      };
 
-    // Click handlers: move by exactly one card per click
-    next.addEventListener("click", () => {
-      track.scrollBy({ left: getStep(), behavior: "smooth" });
-      setTimeout(updateDisabled, 300);
+      updateDisabled();
+
+      // Click handlers: move by exactly one card per click
+      next.addEventListener("click", () => {
+        track.scrollBy({ left: getStep(), behavior: "smooth" });
+        setTimeout(updateDisabled, 300);
+      });
+
+      prev.addEventListener("click", () => {
+        track.scrollBy({ left: -getStep(), behavior: "smooth" });
+        setTimeout(updateDisabled, 300);
+      });
+
+      // Keep buttons in sync while user scrolls
+      track.addEventListener("scroll", updateDisabled, { passive: true });
+
+      // Optional: basic drag-to-scroll for desktop
+      let isDown = false,
+        startX = 0,
+        startLeft = 0;
+
+      const onMouseDown = (e) => {
+        isDown = true;
+        startX = e.pageX;
+        startLeft = track.scrollLeft;
+        track.classList.add("grabbing");
+        // Prevent selecting images/text while dragging
+        e.preventDefault();
+      };
+
+      const onMouseMove = (e) => {
+        if (!isDown) return;
+        const dx = e.pageX - startX;
+        track.scrollLeft = startLeft - dx * 1.2; // speed factor
+      };
+
+      const onMouseUp = () => {
+        if (!isDown) return;
+        isDown = false;
+        track.classList.remove("grabbing");
+      };
+
+      track.addEventListener("mousedown", onMouseDown);
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mouseup", onMouseUp);
+
+      // Optional: snap neatly to nearest card after wheel/drag end
+      let snapTimer;
+      const snapToNearest = () => {
+        clearTimeout(snapTimer);
+        snapTimer = setTimeout(() => {
+          const step = getStep();
+          const current = track.scrollLeft;
+          const targetIndex = Math.round(current / step);
+          const target = targetIndex * step;
+          track.scrollTo({ left: target, behavior: "smooth" });
+        }, 120);
+      };
+      track.addEventListener("wheel", snapToNearest, { passive: true });
+      track.addEventListener("mouseup", snapToNearest);
+      track.addEventListener("touchend", snapToNearest);
+      window.addEventListener("resize", updateDisabled);
     });
-
-    prev.addEventListener("click", () => {
-      track.scrollBy({ left: -getStep(), behavior: "smooth" });
-      setTimeout(updateDisabled, 300);
-    });
-
-    // Keep buttons in sync while user scrolls
-    track.addEventListener("scroll", updateDisabled, { passive: true });
-
-    // Optional: basic drag-to-scroll for desktop
-    let isDown = false,
-      startX = 0,
-      startLeft = 0;
-
-    const onMouseDown = (e) => {
-      isDown = true;
-      startX = e.pageX;
-      startLeft = track.scrollLeft;
-      track.classList.add("grabbing");
-      // Prevent selecting images/text while dragging
-      e.preventDefault();
-    };
-
-    const onMouseMove = (e) => {
-      if (!isDown) return;
-      const dx = e.pageX - startX;
-      track.scrollLeft = startLeft - dx * 1.2; // speed factor
-    };
-
-    const onMouseUp = () => {
-      if (!isDown) return;
-      isDown = false;
-      track.classList.remove("grabbing");
-    };
-
-    track.addEventListener("mousedown", onMouseDown);
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", onMouseUp);
-
-    // Optional: snap neatly to nearest card after wheel/drag end
-    let snapTimer;
-    const snapToNearest = () => {
-      clearTimeout(snapTimer);
-      snapTimer = setTimeout(() => {
-        const step = getStep();
-        const current = track.scrollLeft;
-        const targetIndex = Math.round(current / step);
-        const target = targetIndex * step;
-        track.scrollTo({ left: target, behavior: "smooth" });
-      }, 120);
-    };
-    track.addEventListener("wheel", snapToNearest, { passive: true });
-    track.addEventListener("mouseup", snapToNearest);
-    track.addEventListener("touchend", snapToNearest);
-    window.addEventListener("resize", updateDisabled);
   });
 });
 
@@ -508,67 +585,6 @@ if (tfViewport) {
     scrollSpeed = 0.5;
   });
 }
-
-//About Section
-// About Video Modal + Scroll Animation
-(function () {
-  const openBtn = document.querySelector(".about-play");
-  const modal = document.getElementById("about-video-modal");
-  const wrap = modal.querySelector(".video-wrap");
-  const closeEls = modal.querySelectorAll("[data-close]");
-  let lastFocus = null;
-
-  // Scroll reveal animation
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  document
-    .querySelectorAll(".about-card, .about-media")
-    .forEach((el) => observer.observe(el));
-
-  // --- MODAL LOGIC ---
-
-  // Open modal
-  openBtn.addEventListener("click", () => {
-    lastFocus = document.activeElement;
-    modal.hidden = false;
-    wrap.innerHTML = `<iframe title="EcoPrint video"
-      src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0&playsinline=1&modestbranding=1"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen></iframe>`;
-    document.body.style.overflow = "hidden";
-  });
-
-  // Close modal
-  function closeModal() {
-    modal.hidden = true;
-    wrap.innerHTML = ""; // clear video so it stops playing
-    document.body.style.overflow = "";
-    if (lastFocus) lastFocus.focus();
-  }
-
-  // Close on X and backdrop
-  closeEls.forEach((el) => el.addEventListener("click", closeModal));
-  modal.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modal-backdrop")) {
-      closeModal();
-    }
-  });
-
-  // Close on Escape
-  document.addEventListener("keydown", (e) => {
-    if (!modal.hidden && e.key === "Escape") closeModal();
-  });
-})();
 
 //Shop Section
 const animatedCards = document.querySelectorAll("[data-animate]");
