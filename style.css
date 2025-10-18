@@ -400,6 +400,7 @@ body {
   line-height: 1.2;
   margin-bottom: 0.75rem;
   background: linear-gradient(90deg, var(--leaf), var(--forest));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1399,6 +1400,8 @@ body {
   font-size: 2rem;
   font-weight: 700;
   background: linear-gradient(90deg, #64a9d6, #b1d6e9);
+  /* -webkit-background-clip: text; */
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1563,6 +1566,7 @@ body {
   font-size: 3rem;
   font-weight: 700;
   background: linear-gradient(90deg, #64a9d6, #b1d6e9);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1635,6 +1639,7 @@ body {
   font-size: 3rem;
   font-weight: 700;
   background: linear-gradient(90deg, #64a9d6, #b1d6e9);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1875,7 +1880,8 @@ body {
     rgba(177, 214, 233, 0.28),
     rgba(100, 169, 214, 0.28)
   );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: url(mask-shape.svg) no-repeat center / contain;
+  -webkit-mask: url(mask-shape.svg) no-repeat center / contain;
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   padding: 1px;
@@ -3242,7 +3248,7 @@ img {
   margin: 0;
 }
 
-.video-section  h3 a {
+.video-section h3 a {
   text-decoration: none;
   color: black;
 }
@@ -3260,4 +3266,173 @@ img {
   font-size: 0.95rem;
   color: #334155;
   line-height: 1.5;
+}
+
+/* Our team Css */
+
+.text-blk {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  line-height: 25px;
+}
+
+.responsive-cell-block {
+  min-height: 75px;
+}
+
+.responsive-container-block {
+  min-height: 75px;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  justify-content: space-evenly;
+}
+
+.outer-container {
+  padding-top: 10px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  background-color: rgb(244, 252, 255);
+}
+
+.inner-container {
+  max-width: 1320px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-right: auto;
+  margin-bottom: 50px;
+  margin-left: auto;
+}
+
+.section-head-text {
+  margin: 0px 0px 20px 0px;
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 48px;
+  color: rgb(0, 135, 177);
+  margin: 0 0 10px 0;
+}
+
+.section-subhead-text {
+  font-size: 25px;
+  color: rgb(153, 153, 153);
+  line-height: 35px;
+  max-width: 470px;
+  text-align: center;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 60px;
+  margin-left: 0px;
+}
+
+/* Bounce animation keyframes */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.img-wrapper {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: inline-block;
+  animation-name: bounce;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Different bounce speeds and delays for variety */
+.team-card-container:nth-child(1) .img-wrapper {
+  animation-duration: 2s;
+  animation-delay: 0s;
+}
+
+.team-card-container:nth-child(2) .img-wrapper {
+  animation-duration: 2.5s;
+  animation-delay: 0.3s;
+}
+
+.team-card-container:nth-child(3) .img-wrapper {
+  animation-duration: 3s;
+  animation-delay: 0.6s;
+}
+
+.team-card-container:nth-child(4) .img-wrapper {
+  animation-duration: 2.8s;
+  animation-delay: 0.9s;
+}
+
+.team-card-container:nth-child(5) .img-wrapper {
+  animation-duration: 3.2s;
+  animation-delay: 1.2s;
+}
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(102, 102, 102);
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+}
+
+.position {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(0, 135, 177);
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+}
+
+.team-card-container {
+  width: 200px;
+  margin: 0 0 40px 0;
+}
+
+@media (max-width: 500px) {
+  .outer-container {
+    padding: 10px 20px 10px 20px;
+  }
+
+  .section-head-text {
+    text-align: center;
+  }
 }

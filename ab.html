@@ -3,17 +3,238 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EcoBana Video & Article Features</title>
+    <title>Our Team</title>
     <style>
-      
+      :root{
+        --bg: #f6fbf8;
+        --card: #ffffff;
+        --text: #18314f;
+      }
+
+      *{box-sizing:border-box}
+      body{
+        margin:0;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        background:var(--bg);
+        color:var(--text);
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+        padding:40px;
+      }
+
+      .our-team{
+        max-width:1100px;
+        margin:0 auto;
+      }
+
+      .our-team h2{
+        text-align:center;
+        margin:8px 0 28px;
+        font-size:28px;
+        letter-spacing:0.2px;
+      }
+
+      .container{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+        gap:24px;
+        align-items:start;
+      }
+
+      .member{
+        background:var(--card);
+        border-radius:12px;
+        padding:18px;
+        box-shadow:0 6px 18px rgba(17,24,39,0.06);
+        text-align:center;
+        position:relative;
+        overflow:hidden;
+      }
+
+      .member h3{
+        margin:0 0 12px;
+        font-size:16px;
+        font-weight:600;
+      }
+
+      .ball-wrap{
+        height:120px;
+        display:flex;
+        align-items:flex-end;
+        justify-content:center;
+        position:relative;
+      }
+
+      .ball{
+        width:72px;
+        height:72px;
+        border-radius:50%;
+        display:inline-block;
+        box-shadow: 0 12px 22px rgba(26,38,58,0.12);
+        transform-origin: center bottom;
+        /* CSS vars controlled by JS for variety */
+        --bounce-distance: 40px;
+        --duration: 1.8s;
+        --delay: 0s;
+        animation: bounce var(--duration) ease-in-out var(--delay) infinite;
+        will-change: transform;
+      }
+
+      /* subtle shadow scaling to enhance bounce illusion */
+      .shadow{
+        position:absolute;
+        bottom:10px;
+        left:50%;
+        transform:translateX(-50%);
+        width:56px;
+        height:10px;
+        border-radius:50%;
+        background:rgba(10,10,10,0.12);
+        filter:blur(6px);
+        transition:transform .18s linear, opacity .18s linear;
+        opacity:1;
+      }
+
+      @keyframes bounce{
+        0%{
+          transform: translateY(0) scaleY(1);
+        }
+        25%{
+          transform: translateY(calc(-0.55 * var(--bounce-distance))) scaleY(0.95);
+        }
+        50%{
+          transform: translateY(calc(-1 * var(--bounce-distance))) scaleY(0.9);
+        }
+        75%{
+          transform: translateY(calc(-0.55 * var(--bounce-distance))) scaleY(0.96);
+        }
+        100%{
+          transform: translateY(0) scaleY(1);
+        }
+      }
+
+      /* per-member color defaults (overridden by JS if present) */
+      .member:nth-child(1) .ball{ background:#FF6B6B; }
+      .member:nth-child(2) .ball{ background:#FFD93D; }
+      .member:nth-child(3) .ball{ background:#6BCB77; }
+      .member:nth-child(4) .ball{ background:#4D96FF; }
+      .member:nth-child(5) .ball{ background:#9B5DE5; }
+
+      /* pause animation on hover */
+      .member:hover .ball{
+        animation-play-state:paused;
+      }
+      .member:hover .shadow{
+        transform:translateX(-50%) scale(1.05);
+        opacity:.9;
+      }
+
+      /* responsive tweaks */
+      @media (max-width:420px){
+        .ball{ width:60px; height:60px; }
+        .shadow{ width:48px; }
+        .ball-wrap{ height:100px; }
+      }
     </style>
   </head>
 
   <body>
+    <section class="our-team">
+      <div class="container-heading" style="text-align:center;">
+        <h2>Our Team</h2>
+        <p style="margin:0 0 20px;color:rgba(24,49,79,0.65);font-size:14px;">Five team members — each with a colorful bouncing ball</p>
+      </div>
 
+      <div class="container">
+        <div class="member">
+          <h3>Alice Johnson</h3>
+          <div class="ball-wrap">
+            <div class="ball" data-name="Alice"></div>
+            <div class="shadow"></div>
+          </div>
+        </div>
+
+        <div class="member">
+          <h3>Bob Martín</h3>
+          <div class="ball-wrap">
+            <div class="ball" data-name="Bob"></div>
+            <div class="shadow"></div>
+          </div>
+        </div>
+
+        <div class="member">
+          <h3>Carol Nguyen</h3>
+          <div class="ball-wrap">
+            <div class="ball" data-name="Carol"></div>
+            <div class="shadow"></div>
+          </div>
+        </div>
+
+        <div class="member">
+          <h3>David Lee</h3>
+          <div class="ball-wrap">
+            <div class="ball" data-name="David"></div>
+            <div class="shadow"></div>
+          </div>
+        </div>
+
+        <div class="member">
+          <h3>Eve Patel</h3>
+          <div class="ball-wrap">
+            <div class="ball" data-name="Eve"></div>
+            <div class="shadow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <script>
-      
+      // assign distinct colors and randomized bounce parameters for variety
+      (function(){
+        const colors = ['#FF6B6B','#FFD93D','#6BCB77','#4D96FF','#9B5DE5'];
+        const balls = document.querySelectorAll('.ball');
+
+        balls.forEach((ball, i) => {
+          const color = colors[i % colors.length];
+          // set color
+          ball.style.background = color;
+
+          // randomized duration between 1.4s and 2.4s
+          const duration = (1.4 + Math.random() * 1.0).toFixed(2) + 's';
+          // randomized bounce distance between 28px and 56px
+          const distance = (28 + Math.random() * 28).toFixed(0) + 'px';
+          // small stagger
+          const delay = (i * 0.08).toFixed(2) + 's';
+
+          ball.style.setProperty('--duration', duration);
+          ball.style.setProperty('--bounce-distance', distance);
+          ball.style.setProperty('--delay', delay);
+
+          // tie shadow transform to animation via a simple RAF loop (keeps sync)
+          const shadow = ball.parentElement.querySelector('.shadow');
+          let start = performance.now();
+
+          function tick(now){
+            const dur = parseFloat(duration) * 1000;
+            const t = ((now - start + (parseFloat(delay) * 1000)) % dur) / dur; // 0..1
+            // progress mapping to vertical position similar to keyframes
+            // ease in-out like shape
+            const eased = 0.5 - 0.5 * Math.cos(Math.PI * 2 * t);
+            const dist = parseFloat(distance);
+            // compute scale for shadow (smaller when ball is higher)
+            const scale = 1 - (eased * 0.35);
+            const opacity = 0.18 - (eased * 0.08);
+            shadow.style.transform = `translateX(-50%) scale(${1 + (eased*0.05)})`;
+            shadow.style.opacity = Math.max(0.06, opacity).toFixed(2);
+            requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+
+          // descriptive tooltip for accessibility
+          ball.setAttribute('aria-label', `${ball.dataset.name}'s bouncing marker`);
+          ball.setAttribute('role', 'img');
+        });
+      })();
     </script>
   </body>
 </html>
