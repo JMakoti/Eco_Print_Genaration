@@ -1,29 +1,27 @@
+// ===================================================
+// Sticky Navbar + Hamburger Menu
+// ===================================================
+
 // Sticky Navbar Shadow
 window.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar");
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
+  if (!navbar) return;
+  navbar.classList.toggle("scrolled", window.scrollY > 50);
 });
 
 // Toggle Hamburger Menu
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("nav-menu");
 
-if (hamburger) {
+if (hamburger && navMenu) {
   hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("show");
   });
 }
-// hamburger.addEventListener("click", () => {
-//   navMenu.classList.toggle("show");
-// });
 
-// SHARED JS
-//Testimonial
-// ===================== Testimonials (tms) — Fresh JS =====================
+// ===================================================
+// Testimonials Carousel (tms)
+// ===================================================
 (function () {
   const section = document.querySelector(".tms-section");
   const viewport = document.querySelector(".tms-viewport");
@@ -35,18 +33,13 @@ if (hamburger) {
 
   if (!section || !viewport || !track || slides.length === 0) return;
 
-  // ---- State
   let index = 0;
   let autoEnabled = !window.matchMedia("(prefers-reduced-motion: reduce)")
     .matches;
   let autoTimer = null;
 
-  // ---- Helpers
-  function clamp(n, min, max) {
-    return Math.max(min, Math.min(max, n));
-  }
+  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
-  // compute the left scroll so slide i is centered in the viewport
   function centerLeftFor(i) {
     const slide = slides[i];
     const left =
@@ -68,32 +61,28 @@ if (hamburger) {
     setActiveDot(index);
   }
 
-  // Update active index based on current scroll position (for manual drag/scroll)
   function syncIndexFromScroll() {
     const center = track.scrollLeft + viewport.clientWidth / 2;
     let best = 0,
       bestDist = Infinity;
-    for (let i = 0; i < slides.length; i++) {
-      const s = slides[i];
+    slides.forEach((s, i) => {
       const c = s.offsetLeft + s.clientWidth / 2;
       const d = Math.abs(c - center);
       if (d < bestDist) {
         best = i;
         bestDist = d;
       }
-    }
+    });
     if (best !== index) {
       index = best;
       setActiveDot(index);
     }
   }
 
-  // ---- Controls
   prevBtn?.addEventListener("click", () => snapTo(index - 1));
   nextBtn?.addEventListener("click", () => snapTo(index + 1));
   dots.forEach((dot, i) => dot.addEventListener("click", () => snapTo(i)));
 
-  // ---- Drag/Swipe
   let isDown = false,
     startX = 0,
     startLeft = 0;
@@ -101,13 +90,12 @@ if (hamburger) {
     isDown = true;
     startX = e.clientX;
     startLeft = track.scrollLeft;
-    track.style.scrollBehavior = "auto"; // disable smooth during drag for snappy feel
+    track.style.scrollBehavior = "auto";
     track.setPointerCapture(e.pointerId);
   });
   track.addEventListener("pointermove", (e) => {
     if (!isDown) return;
-    const dx = e.clientX - startX;
-    track.scrollLeft = startLeft - dx;
+    track.scrollLeft = startLeft - (e.clientX - startX);
     syncIndexFromScroll();
   });
   window.addEventListener(
@@ -115,18 +103,15 @@ if (hamburger) {
     () => {
       if (!isDown) return;
       isDown = false;
-      track.style.scrollBehavior = ""; // restore smooth
-      // snap to nearest slide gently
+      track.style.scrollBehavior = "";
       snapTo(index);
     },
     { passive: true }
   );
 
-  // ---- Sync on scroll/resize
   track.addEventListener("scroll", syncIndexFromScroll, { passive: true });
   window.addEventListener("resize", () => snapTo(index, false));
 
-  // ---- Autoplay (pauses on hover and when section not visible)
   function startAuto() {
     if (!autoEnabled) return;
     stopAuto();
@@ -137,11 +122,9 @@ if (hamburger) {
     autoTimer = null;
   }
 
-  // Pause on hover
   viewport.addEventListener("mouseenter", stopAuto);
   viewport.addEventListener("mouseleave", startAuto);
 
-  // Disable autoplay after any user interaction
   ["pointerdown", "wheel", "keydown", "touchstart"].forEach((evt) => {
     track.addEventListener(
       evt,
@@ -153,107 +136,84 @@ if (hamburger) {
     );
   });
 
-  // Pause when section not in view
   const vis = new IntersectionObserver(
-    (entries) => {
-      const visible = entries[0]?.isIntersecting;
-      if (visible) startAuto();
-      else stopAuto();
-    },
+    (entries) => (entries[0]?.isIntersecting ? startAuto() : stopAuto()),
     { threshold: 0.25 }
   );
   vis.observe(section);
 
-  // ---- Init
-  // If content/images cause width shifts, center after load as well
   window.addEventListener("load", () => snapTo(0, false));
   snapTo(0, false);
 })();
 
-//About Section
-// About Video Modal + Scroll Animation
+// ===================================================
+// About Section - Video Modal + Scroll Animation
+// ===================================================
 (function () {
   const openBtn = document.querySelector(".about-play");
   const modal = document.getElementById("about-video-modal");
+  if (!openBtn || !modal) return;
   const wrap = modal.querySelector(".video-wrap");
   const closeEls = modal.querySelectorAll("[data-close]");
   let lastFocus = null;
 
-  // Scroll reveal animation
   const observer = new IntersectionObserver(
-    (entries) => {
+    (entries) =>
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      }),
     { threshold: 0.2 }
   );
-
   document
     .querySelectorAll(".about-card, .about-media")
     .forEach((el) => observer.observe(el));
 
-  // --- MODAL LOGIC ---
-
-  // Open modal
   openBtn.addEventListener("click", () => {
     lastFocus = document.activeElement;
     modal.hidden = false;
     wrap.innerHTML = `<iframe title="EcoPrint video"
       src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0&playsinline=1&modestbranding=1"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>`;
     document.body.style.overflow = "hidden";
   });
 
-  // Close modal
   function closeModal() {
     modal.hidden = true;
-    wrap.innerHTML = ""; // clear video so it stops playing
+    wrap.innerHTML = "";
     document.body.style.overflow = "";
-    if (lastFocus) lastFocus.focus();
+    lastFocus?.focus();
   }
 
-  // Close on X and backdrop
   closeEls.forEach((el) => el.addEventListener("click", closeModal));
   modal.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modal-backdrop")) {
-      closeModal();
-    }
+    if (e.target.classList.contains("modal-backdrop")) closeModal();
   });
-
-  // Close on Escape
   document.addEventListener("keydown", (e) => {
     if (!modal.hidden && e.key === "Escape") closeModal();
   });
 })();
 
-// CONTACT
-
+// ===================================================
+// Contact Form Animation + Validation
+// ===================================================
 const form = document.getElementById("orderForm");
 const status = document.getElementById("formStatus");
 const groups = document.querySelectorAll(".form-group");
 const title = document.querySelector(".animate-title");
 const subtitle = document.querySelector(".animate-subtitle");
 
-// Animate entrance like Framer Motion
 function animateForm() {
   if (!title || !subtitle) return;
   title.classList.add("animate-show");
   subtitle.classList.add("animate-show");
   groups.forEach((el, i) => {
-    setTimeout(() => {
-      el.classList.add("animate-show");
-    }, i * 100);
+    setTimeout(() => el.classList.add("animate-show"), i * 100);
   });
 }
 window.addEventListener("load", animateForm);
 
-if (form) {
-  // Form Submit
+if (form && status) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const name = document.getElementById("name");
@@ -279,13 +239,16 @@ if (form) {
     }, 1200);
   });
 }
-//Process Section
 
+// ===================================================
+// Process Section
+// ===================================================
 (() => {
   const track = document.querySelector(".pq-trackcards");
   const fill = document.querySelector(".pq-progress");
   const btns = document.querySelectorAll(".pq-btn");
   const steps = document.querySelectorAll(".pq-step");
+  if (!track || !fill || !btns.length || !steps.length) return;
 
   let current = 0;
   const total = steps.length;
@@ -293,29 +256,16 @@ if (form) {
   function updateProgress() {
     const progress = current / (total - 1);
     fill.style.strokeDashoffset = 1800 * (1 - progress);
-    steps.forEach((step, i) => {
-      step.classList.toggle("active", i === current);
-    });
+    steps.forEach((step, i) => step.classList.toggle("active", i === current));
   }
 
   btns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      // step width = first card’s full width (including gap)
       const stepWidth =
         steps[0].offsetWidth + parseInt(getComputedStyle(track).gap || 0);
-
-      if (btn.dataset.dir === "next") {
-        if (current < total - 1) current++;
-      } else {
-        if (current > 0) current--;
-      }
-
-      // scroll to the correct position
-      track.scrollTo({
-        left: stepWidth * current,
-        behavior: "smooth",
-      });
-
+      current += btn.dataset.dir === "next" ? 1 : -1;
+      current = Math.max(0, Math.min(current, total - 1));
+      track.scrollTo({ left: stepWidth * current, behavior: "smooth" });
       updateProgress();
     });
   });
@@ -331,55 +281,13 @@ if (form) {
   updateProgress();
 })();
 
-// video and Article Section
-// // video and Article Section
-// document.addEventListener("DOMContentLoaded", () => {
-//   const scrollContainers = document.querySelectorAll(".scroll-container");
-//   scrollContainers.forEach((container) => {
-//     const grid = container.querySelector(".video-grid");
-//     const leftBtn = container.querySelector(".scroll-btn.left");
-//     const rightBtn = container.querySelector(".scroll-btn.right");
-
-//     if (!grid) return; // nothing to scroll
-
-//     // make scroll amount responsive to container width
-//     const getScrollAmount = () =>
-//       Math.max(280, Math.floor(container.clientWidth * 0.7));
-
-//     // click handlers (guard buttons)
-//     if (leftBtn) {
-//       leftBtn.addEventListener("click", () => {
-//         grid.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
-//       });
-//     }
-//     if (rightBtn) {
-//       rightBtn.addEventListener("click", () => {
-//         grid.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
-//       });
-//     }
-
-//     // allow keyboard navigation when container receives focus
-//     container.setAttribute("tabindex", "0");
-//     container.addEventListener("keydown", (e) => {
-//       if (e.key === "ArrowLeft") {
-//         e.preventDefault();
-//         grid.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
-//       } else if (e.key === "ArrowRight") {
-//         e.preventDefault();
-//         grid.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
-//       }
-//     });
-//   });
-// });
-
-// shop.html section
-
-// ===== Hexashop-like carousel (no external libs) =====
+// ===================================================
+// Shop Section + Carousel + WhatsApp Integration
+// ===================================================
 document.addEventListener("DOMContentLoaded", () => {
-  // 1) WhatsApp number (no leading +). Replace with yours.
   const WHATSAPP_NUMBER = "254700000000";
 
-  // 2) Build WhatsApp links for every product card.
+  // Build WhatsApp links for each card
   document.querySelectorAll(".card").forEach((card) => {
     const data = JSON.parse(card.dataset.product || "{}");
     const btn = card.querySelector(".buy");
@@ -388,9 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const text = `Hello! I'm interested in:
 • Product: ${data.name}
 • ID: ${data.id || "-"}
-• Price: KES ${data.price || "-"}
-Please share availability and size options.`;
-
+• Price: KES ${data.price || "-"}`;
     btn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
       text
     )}`;
@@ -398,289 +304,126 @@ Please share availability and size options.`;
     btn.rel = "noopener";
   });
 
-  // 3) Initialize each carousel independently.
-  document.addEventListener("DOMContentLoaded", () => {
-    const carousels = document.querySelectorAll(".carousel");
-    if (!carousels.length) return;
+  // Initialize carousels
+  const carousels = document.querySelectorAll(".carousel");
+  carousels.forEach((carousel) => {
+    const track = carousel.querySelector(".track");
+    const prev = carousel.querySelector(".nav.prev");
+    const next = carousel.querySelector(".nav.next");
+    if (!track || !prev || !next) return;
 
-    carousels.forEach((carousel) => {
-      const track = carousel.querySelector(".track");
-      const prev = carousel.querySelector(".nav.prev");
-      const next = carousel.querySelector(".nav.next");
-      if (!track || !prev || !next) return;
-      // document.querySelectorAll(".carousel").forEach((carousel) => {
-      //   const track = carousel.querySelector(".track");
-      //   const prev = carousel.querySelector(".nav.prev");
-      //   const next = carousel.querySelector(".nav.next");
-      //   if (!track || !prev || !next) return;
+    const getGap = () => parseFloat(getComputedStyle(track).gap || "0") || 0;
+    const getStep = () => {
+      const card = track.querySelector(".card");
+      return card ? card.getBoundingClientRect().width + getGap() : 300;
+    };
 
-      // Helper: get numeric gap between cards from CSS
-      const getGap = () => {
-        const cs = getComputedStyle(track);
-        // Some browsers expose 'columnGap', others just 'gap'
-        const gapStr = cs.columnGap || cs.gap || "0px";
-        const n = parseFloat(gapStr);
-        return Number.isFinite(n) ? n : 0;
-      };
+    const updateDisabled = () => {
+      const max = track.scrollWidth - track.clientWidth - 1;
+      prev.disabled = track.scrollLeft <= 0;
+      next.disabled = track.scrollLeft >= max;
+    };
 
-      // Helper: how far to move = width of one card + gap
-      const getStep = () => {
-        const card = track.querySelector(".card");
-        if (!card) return 300;
-        const w = card.getBoundingClientRect().width;
-        return w + getGap();
-      };
-
-      // Update arrow disabled states
-      const updateDisabled = () => {
-        const max = track.scrollWidth - track.clientWidth - 1; // tolerance
-        prev.disabled = track.scrollLeft <= 0;
-        next.disabled = track.scrollLeft >= max;
-      };
-
-      updateDisabled();
-
-      // Click handlers: move by exactly one card per click
-      next.addEventListener("click", () => {
-        track.scrollBy({ left: getStep(), behavior: "smooth" });
-        setTimeout(updateDisabled, 300);
-      });
-
-      prev.addEventListener("click", () => {
-        track.scrollBy({ left: -getStep(), behavior: "smooth" });
-        setTimeout(updateDisabled, 300);
-      });
-
-      // Keep buttons in sync while user scrolls
-      track.addEventListener("scroll", updateDisabled, { passive: true });
-
-      // Optional: basic drag-to-scroll for desktop
-      let isDown = false,
-        startX = 0,
-        startLeft = 0;
-
-      const onMouseDown = (e) => {
-        isDown = true;
-        startX = e.pageX;
-        startLeft = track.scrollLeft;
-        track.classList.add("grabbing");
-        // Prevent selecting images/text while dragging
-        e.preventDefault();
-      };
-
-      const onMouseMove = (e) => {
-        if (!isDown) return;
-        const dx = e.pageX - startX;
-        track.scrollLeft = startLeft - dx * 1.2; // speed factor
-      };
-
-      const onMouseUp = () => {
-        if (!isDown) return;
-        isDown = false;
-        track.classList.remove("grabbing");
-      };
-
-      track.addEventListener("mousedown", onMouseDown);
-      window.addEventListener("mousemove", onMouseMove);
-      window.addEventListener("mouseup", onMouseUp);
-
-      // Optional: snap neatly to nearest card after wheel/drag end
-      let snapTimer;
-      const snapToNearest = () => {
-        clearTimeout(snapTimer);
-        snapTimer = setTimeout(() => {
-          const step = getStep();
-          const current = track.scrollLeft;
-          const targetIndex = Math.round(current / step);
-          const target = targetIndex * step;
-          track.scrollTo({ left: target, behavior: "smooth" });
-        }, 120);
-      };
-      track.addEventListener("wheel", snapToNearest, { passive: true });
-      track.addEventListener("mouseup", snapToNearest);
-      track.addEventListener("touchend", snapToNearest);
-      window.addEventListener("resize", updateDisabled);
+    updateDisabled();
+    next.addEventListener("click", () => {
+      track.scrollBy({ left: getStep(), behavior: "smooth" });
+      setTimeout(updateDisabled, 300);
     });
+    prev.addEventListener("click", () => {
+      track.scrollBy({ left: -getStep(), behavior: "smooth" });
+      setTimeout(updateDisabled, 300);
+    });
+    track.addEventListener("scroll", updateDisabled, { passive: true });
   });
 });
 
-// Auto-scroll carousel
-// const track = document.querySelector(".tf-track");
-// let scrollAmount = 0;
-// let scrollStep = 1; // pixels per interval
-// let maxScroll = track.scrollWidth - track.clientWidth;
+// ===================================================
+// Auto-scroll Feature + Partners Marquee + Floating Shapes
+// ===================================================
 
-// function autoScroll() {
-//   scrollAmount += scrollStep;
-//   if (scrollAmount >= maxScroll) scrollAmount = 0;
-//   track.scrollTo({ left: scrollAmount, behavior: "smooth" });
-// }
-
-// setInterval(autoScroll, 20); // adjust speed here
-
+// Auto-scroll top feature
 const tfAutoTrack = document.querySelector(".tf-track");
-let autoScrollAmount = 0;
-let autoScrollStep = 1; // pixels per interval
 if (tfAutoTrack) {
-  let autoMaxScroll = tfAutoTrack.scrollWidth - tfAutoTrack.clientWidth;
+  let autoScrollAmount = 0;
+  const step = 1;
   function autoScroll() {
-    autoMaxScroll = tfAutoTrack.scrollWidth - tfAutoTrack.clientWidth;
-    autoScrollAmount += autoScrollStep;
-    if (autoScrollAmount >= autoMaxScroll) autoScrollAmount = 0;
+    const max = tfAutoTrack.scrollWidth - tfAutoTrack.clientWidth;
+    autoScrollAmount = (autoScrollAmount + step) % max;
     tfAutoTrack.scrollTo({ left: autoScrollAmount, behavior: "smooth" });
   }
   setInterval(autoScroll, 20);
 }
-//Top Feature
-// consttrack = document.querySelector(".tf-track");
-// let scrollSpeed = 0.7; // pixels per frame
-// let position = 0;
 
-// function animate() {
-//   position -= scrollSpeed;
-
-//   // Reset position when half of the track width is scrolled (because we duplicated items)
-//   if (Math.abs(position) >= track.scrollWidth / 2) {
-//     position = 0;
-//   }
-
-//   track.style.transform = `translateX(${position}px)`;
-//   requestAnimationFrame(animate);
-// }
-
-// animate();
-
-// // Pause on hover
-// document.querySelector(".tf-viewport").addEventListener("mouseenter", () => {
-//   scrollSpeed = 0;
-// });
-// document.querySelector(".tf-viewport").addEventListener("mouseleave", () => {
-//   scrollSpeed = 0.5;
-// });
-
+// Continuous scroll animation (Top Feature)
 const tfTrack = document.querySelector(".tf-track");
-let scrollSpeed = 0.7; // pixels per frame
+let scrollSpeed = 0.7;
 let position = 0;
-
 function animate() {
   if (!tfTrack) return;
   position -= scrollSpeed;
-  // Reset position when half of the track width is scrolled (because we duplicated items)
-  if (Math.abs(position) >= tfTrack.scrollWidth / 2) {
-    position = 0;
-  }
+  if (Math.abs(position) >= tfTrack.scrollWidth / 2) position = 0;
   tfTrack.style.transform = `translateX(${position}px)`;
   requestAnimationFrame(animate);
 }
-
 animate();
 
-// Pause on hover (guard)
 const tfViewport = document.querySelector(".tf-viewport");
 if (tfViewport) {
-  tfViewport.addEventListener("mouseenter", () => {
-    scrollSpeed = 0;
-  });
-  tfViewport.addEventListener("mouseleave", () => {
-    scrollSpeed = 0.5;
-  });
+  tfViewport.addEventListener("mouseenter", () => (scrollSpeed = 0));
+  tfViewport.addEventListener("mouseleave", () => (scrollSpeed = 0.5));
 }
 
-//Shop Section
+// ===================================================
+// Scroll Animations + Counters
+// ===================================================
 const animatedCards = document.querySelectorAll("[data-animate]");
-
 function animateOnScroll() {
   const triggerBottom = window.innerHeight * 0.85;
-
   animatedCards.forEach((card) => {
-    const cardTop = card.getBoundingClientRect().top;
-
-    if (cardTop < triggerBottom) {
+    if (card.getBoundingClientRect().top < triggerBottom) {
       card.style.opacity = "1";
       card.style.transform = "translateY(0)";
     }
   });
 }
-
 window.addEventListener("scroll", animateOnScroll);
 window.addEventListener("load", animateOnScroll);
 
+// Facts Counter Animation
 document.addEventListener("DOMContentLoaded", () => {
   const facts = document.querySelectorAll(".fact");
-
-  // Intersection Observer for scroll animation
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Animate each fact
-          const target = +entry.target.dataset.target;
-          const numberEl = entry.target.querySelector(".fact-number");
-          let count = 0;
-          const increment = target / 100; // speed
+        if (!entry.isIntersecting) return;
+        const target = +entry.target.dataset.target;
+        const numberEl = entry.target.querySelector(".fact-number");
+        let count = 0;
+        const increment = target / 100;
 
-          const counter = setInterval(() => {
-            count += increment;
-            if (count >= target) {
-              numberEl.textContent = target.toLocaleString();
-              clearInterval(counter);
-            } else {
-              numberEl.textContent = Math.floor(count).toLocaleString();
-            }
-          }, 15);
+        const counter = setInterval(() => {
+          count += increment;
+          if (count >= target) {
+            numberEl.textContent = target.toLocaleString();
+            clearInterval(counter);
+          } else {
+            numberEl.textContent = Math.floor(count).toLocaleString();
+          }
+        }, 15);
 
-          // Add entrance animation
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = "translateY(0)";
-
-          observer.unobserve(entry.target); // run once
-        }
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = "translateY(0)";
+        observer.unobserve(entry.target);
       });
     },
     { threshold: 0.5 }
   );
-
-  facts.forEach((fact) => observer.observe(fact));
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const facts = document.querySelectorAll(".fact");
-
-  // Intersection Observer for scroll animation
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Animate each fact
-          const target = +entry.target.dataset.target;
-          const numberEl = entry.target.querySelector(".fact-number");
-          let count = 0;
-          const increment = target / 100; // speed
-
-          const counter = setInterval(() => {
-            count += increment;
-            if (count >= target) {
-              numberEl.textContent = target.toLocaleString();
-              clearInterval(counter);
-            } else {
-              numberEl.textContent = Math.floor(count).toLocaleString();
-            }
-          }, 15);
-
-          // Add entrance animation
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = "translateY(0)";
-
-          observer.unobserve(entry.target); // run once
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
   facts.forEach((fact) => observer.observe(fact));
 });
 
-// ========= Partners Logos Marquee (namespaced: pl) =========
+// ===================================================
+// Partners Logos Marquee (pl)
+// ===================================================
 (function () {
   const viewports = document.querySelectorAll(".pl-viewport");
   if (!viewports.length) return;
@@ -688,23 +431,18 @@ document.addEventListener("DOMContentLoaded", () => {
   viewports.forEach((vp) => {
     const track = vp.querySelector(".pl-track");
     if (!track) return;
-
-    // Duplicate items until track > ~2x viewport for seamless scroll
     const baseItems = Array.from(track.children).map((el) =>
       el.cloneNode(true)
     );
-    function build() {
-      // reset to base
-      track.replaceChildren(...baseItems.map((n) => n.cloneNode(true)));
 
+    function build() {
+      track.replaceChildren(...baseItems.map((n) => n.cloneNode(true)));
       let w = track.scrollWidth;
-      const target = vp.clientWidth * 2.2; // a bit over 2x
+      const target = vp.clientWidth * 2.2;
       while (w < target) {
         baseItems.forEach((n) => track.appendChild(n.cloneNode(true)));
         w = track.scrollWidth;
       }
-
-      // Speed control: pixels per second from data-speed (default 120)
       const pxPerSec = parseInt(track.dataset.speed || "90", 10);
       const duration = w / pxPerSec;
       track.style.setProperty("--pl-duration", `${duration}s`);
@@ -716,14 +454,12 @@ document.addEventListener("DOMContentLoaded", () => {
       track._r = setTimeout(build, 150);
     });
 
-    // Drag/Swipe to scroll manually (pauses animation while dragging)
     let down = false,
       startX = 0,
       startTx = 0;
     track.addEventListener("pointerdown", (e) => {
       down = true;
       startX = e.clientX;
-      // read current translateX from computed matrix
       const m = getComputedStyle(track).transform;
       startTx = m !== "none" ? parseFloat(m.split(",")[4]) : 0;
       track.style.animationPlayState = "paused";
@@ -731,8 +467,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     track.addEventListener("pointermove", (e) => {
       if (!down) return;
-      const dx = e.clientX - startX;
-      track.style.transform = `translateX(${startTx + dx}px)`;
+      track.style.transform = `translateX(${startTx + (e.clientX - startX)}px)`;
     });
     window.addEventListener(
       "pointerup",
@@ -747,15 +482,33 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 })();
 
-// Optional: Interactive floating shapes following cursor
-document.addEventListener("mousemove", function (e) {
+// ===================================================
+// Floating Shapes Follow Cursor
+// ===================================================
+document.addEventListener("mousemove", (e) => {
   const shapes = document.querySelectorAll(".floating-shape");
-  shapes.forEach((shape, index) => {
-    const speed = (index + 1) * 0.05;
-    const x = e.clientX * speed;
-    const y = e.clientY * speed;
-    shape.style.transform = `translate(${x}px, ${y}px)`;
+  shapes.forEach((shape, i) => {
+    const speed = (i + 1) * 0.05;
+    shape.style.transform = `translate(${e.clientX * speed}px, ${
+      e.clientY * speed
+    }px)`;
   });
 });
 
-//Shop Carousel
+// ===================================================
+// Horizontal scroll for both Videos and Articles
+// ===================================================
+
+document.querySelectorAll(".scroll-wrapper").forEach((wrapper) => {
+  const track = wrapper.querySelector(".scroll-track");
+  const btnLeft = wrapper.querySelector(".scroll-btn.left");
+  const btnRight = wrapper.querySelector(".scroll-btn.right");
+
+  btnLeft.addEventListener("click", () => {
+    track.scrollBy({ left: -300, behavior: "smooth" });
+  });
+
+  btnRight.addEventListener("click", () => {
+    track.scrollBy({ left: 300, behavior: "smooth" });
+  });
+});
