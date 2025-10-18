@@ -26,7 +26,22 @@
         </button>
         <ul class="nav-menu" id="nav-menu">
           <li><a href="index.html" class="nav-link active">Home</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
+          <li class="dropdown">
+            <a href="about.html" class="nav-link"
+              >About<i class="fas fa-chevron-down"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li><a href="#about">Our Story</a></li>
+              <li><a href="#goals">Mission & Vision</a></li>
+              <li><a href="#values">Core Values</a></li>
+              <li><a href="#process">Our Process</a></li>
+              <li><a href="#portfolio">Our Impact</a></li>
+              <li><a href="#media">Media(Videos and Articles)</a></li>
+              <li><a href="#team">Our Team</a></li>
+              <li><a href="#awards">Awards & Recognitions</a></li>
+              <li><a href="#partners">Our Supporters</a></li>
+            </ul>
+          </li>
           <li class="dropdown">
             <a href="#" class="nav-link"
               >Services <i class="fas fa-chevron-down"></i
@@ -167,12 +182,12 @@
       </div>
 
       <!-- Visson Mission Section -->
-      <section class="mision-vision">
+      <section class="mision-vision" id="goals">
         <div class="about-grid-info2">
         <div class="container">
           <div class="mission">
             <div class="about-card1"  data-animate="left">
-            <h2 class="about-title">Our Mision</h2>
+            <h2 class="about-title">Our Mission</h2>
             <p>
               EcoPrint Generation’s mission is to transform plastic waste into sustainable 3D printing materials that empower education, innovation, and environmental conservation—turning waste into opportunity for a cleaner, smarter, and more inclusive future.
             </p>
@@ -198,7 +213,7 @@
       </section>
 
       <!-- Core values -->
-      <section class="core-values about-us section">
+      <section class="core-values about-us section" id="values">
         <!-- <div class=""> -->
           <div class="container">
             <div class="row">
@@ -491,7 +506,7 @@
 
       <!-- // Media Videos and Articles Section -->
       <!-- Videos Section -->
-      <section class="media-section">
+      <section class="media-section" id="media">
         <div class="container">
           <div class="section-header">
             <h2>Videos</h2>
@@ -811,7 +826,7 @@
         </div>
       </section>
 
-      <section class="our-team">
+      <section class="our-team" id="team">
         <div class="responsive-container-block outer-container">
           <div class="responsive-container-block inner-container">
             <p class="text-blk section-head-text">Meet Our Team</p>
@@ -866,7 +881,7 @@
         </div>
       </section>
 
-      <section class="awards-recognitions">
+      <section class="awards-recognitions" id="awards">
         <div class="content-section">
           
       <!-- Left Text Section -->
@@ -906,22 +921,16 @@
           <h2>Our Supporters</h2>
         </div>
         <div class="support">
-          <div class="supporter-card">
             <div class="supporter-logo">
               <img src="img/ctg.png" alt="Partner 1" />
             </div>
-          </div>
-          <div class="supporter-card">
+
             <div class="supporter-logo">
               <img src="img/Infitech logo.png" alt="Partner 2" />
             </div>
-          </div>
         </div>
       </section>
 
-      <!-- <section class="blogs">
-        <h1>Blogs</h1>
-      </section> -->
     </section>
 
     <footer class="creative-footer">
@@ -947,10 +956,13 @@
         <div class="footer-nav">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="#home">Home</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="shop.html">Shop</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#donate">Donate</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
