@@ -2679,8 +2679,11 @@ Reduced motion
   }
 }
 
-/* About Section */
+/* ==============================================
+   🌿 ECO PRINT - ABOUT US PAGE STYLES
+   ============================================== */
 
+/* About Section */
 :root {
   --primary-green: #168630;
   --muted-bg: #dde4ee;
@@ -2971,18 +2974,14 @@ img {
 .portfolio-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
-  /* margin-left: -12px;
-        margin-right: -12px; */
-  margin: 0 auto;
+  gap: 12px;
   padding: 0 12px;
 }
 /* each column becomes a flex item sized for 3 columns */
 .portfolio-row > .col-lg-3 {
   /* fixed card width so 3 cards naturally center inside the row */
-  flex: 0 0 300px;
-  max-width: 300px;
+  flex: 0 0 280px;
+  max-width: 280px;
   box-sizing: border-box;
   padding-left: 12px;
   padding-right: 12px;
@@ -3003,6 +3002,7 @@ img {
   }
 }
 
+/* SDG PORTFOLIO SECTION STYLES */
 .our-portfolio {
   padding: 80px 0;
   background-color: var(--light-bg);
@@ -3086,19 +3086,30 @@ img {
   color: #f1f1f1;
 }
 
+@media (max-width: 992px) {
+  
+}
+
 /* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 992px) {
   .section-heading h2 {
     font-size: 2rem;
   }
   .portfolio-item {
-    height: 250px;
+    height: auto;
+  }
+  .portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease;
   }
 }
 
 @media (max-width: 768px) {
   .portfolio-item {
-    height: 220px;
+    height: auto;
+    width: 100%;
   }
 }
 
@@ -3460,14 +3471,13 @@ img {
   justify-content: center;
 }
 
-/* Transparent, glowing cards */
 .about-card1 {
-  background: rgba(255, 255, 255, 0.1); /* Transparent glass-like look */
+  background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(0, 128, 96, 0.2);
   border-radius: 1rem;
   padding: 2rem;
-  box-shadow: 0 8px 20px rgba(0, 180, 150, 0.25); /* Green–bluish shadow */
-  backdrop-filter: blur(10px); /* Glass effect */
+  box-shadow: 0 8px 20px rgba(0, 180, 150, 0.25);
+  backdrop-filter: blur(10px);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   opacity: 0;
   transform: translateY(30px);
@@ -3536,7 +3546,6 @@ img {
   background-size: cover;
 }
 
-/* ===== Main Container ===== */
 .awards-recognitions .content-section {
   display: flex;
   align-items: center;
@@ -3547,7 +3556,6 @@ img {
   gap: 60px;
 }
 
-/* ===== Left Content (Text) ===== */
 .awards-recognitions .left-content {
   flex: 0.5;
 }
@@ -3576,7 +3584,6 @@ img {
 .awards-recognitions .card {
   width: 300px;
   height: 150px;
-  /* background: transparent; */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -3621,16 +3628,45 @@ img {
   font-size: 1;
 }
 
+/* ===== Responsive Styles ===== */
 @media (max-width: 900px) {
   .awards-recognitions .content-section {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 40px 20px;
   }
 
   .awards-recognitions .award-section {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+    justify-items: center;
+  }
+
+  .awards-recognitions .card {
+    width: 300px;
+    height: 200px;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .awards-recognitions .award-section .card:nth-child(2),
+  .awards-recognitions .award-section .card:nth-child(4) {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .awards-recognitions .award-section {
+    display: block;
+  }
+
+  .awards-recognitions .card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 30px auto;
+    display: block;
+    text-align: center;
   }
 
   .awards-recognitions .award-section .card:nth-child(2),
@@ -3641,6 +3677,16 @@ img {
 
 @media (max-width: 600px) {
   .awards-recognitions .award-section {
-    grid-template-columns: 1fr;
+    display: block;
+    width: 350px;
+  }
+
+  .awards-recognitions .card {
+    width: 100%;
+    height: 150px;
+    max-width: 300px;
+    margin: 0 auto 25px auto;
+    text-align: center;
+    padding: 25px 15px; 
   }
 }
