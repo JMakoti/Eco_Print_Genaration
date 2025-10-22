@@ -1046,7 +1046,7 @@ body {
   /* max-width: 1200px; */
   height: 200px;
   /* margin: 0 auto; */
-  background-image: url(./img/Filament2.jpeg);
+  background-image: url("https://res.cloudinary.com/drselhsl4/image/upload/v1761146383/EcoPrintGeneration/img/tkchbn5m34vhfulrgt9p.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -1539,7 +1539,8 @@ body {
 
 .facts-bg {
   position: relative;
-  background: url("img/Filament2.jpeg") center/cover no-repeat;
+  background: url("'https://res.cloudinary.com/drselhsl4/image/upload/v1761146383/EcoPrintGeneration/img/tkchbn5m34vhfulrgt9p.jpg")
+    center/cover no-repeat;
   border-radius: 20px;
   padding: 5rem 0;
 }
@@ -1612,7 +1613,8 @@ body {
 
 .facts-bg {
   position: relative;
-  background: url("img/beachclean\ up.jpg") center/cover no-repeat;
+  background: url("https://res.cloudinary.com/drselhsl4/image/upload/v1761146380/EcoPrintGeneration/img/bgtrg9rfbcptnfsmjq7r.jpg")
+    center/cover no-repeat;
   border-radius: 20px;
   padding: 5rem 0;
 }
@@ -2698,7 +2700,7 @@ Reduced motion
 
 /* About hero / wrapper */
 .about-us {
-  background-image: url(./img/vector3.png);
+  background-image: url("https://res.cloudinary.com/drselhsl4/image/upload/v1761146427/EcoPrintGeneration/img/mpnmk2ospjmbqje2ctvv.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -3087,7 +3089,6 @@ img {
 }
 
 @media (max-width: 992px) {
-  
 }
 
 /* RESPONSIVE ADJUSTMENTS */
@@ -3540,7 +3541,7 @@ img {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url(./img/vector3.png);
+  background-image: url("https://res.cloudinary.com/drselhsl4/image/upload/v1761146427/EcoPrintGeneration/img/mpnmk2ospjmbqje2ctvv.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -3687,6 +3688,6 @@ img {
     max-width: 300px;
     margin: 0 auto 25px auto;
     text-align: center;
-    padding: 25px 15px; 
+    padding: 25px 15px;
   }
 }
