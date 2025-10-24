@@ -1203,13 +1203,12 @@ body {
 .contact-hero {
   text-align: center;
   padding: 80px 20px;
-  background: linear-gradient(135deg, #c2f0f7 0%, #c7f9cc 100%);
-  color: #023047;
+  background: #64a9d6;
 }
 
 .contact-hero h1 {
   font-size: 3rem;
-  color: #0f1b2d;
+  color: #fff;
   margin-bottom: 1rem;
   font-weight: 700;
   transform: translateY(20px);
@@ -1218,7 +1217,7 @@ body {
 
 .contact-hero p {
   font-size: 1.2rem;
-  color: #0f1b2d;
+  color: #fff;
   line-height: 1.6;
 }
 
