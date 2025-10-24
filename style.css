@@ -1189,7 +1189,7 @@ body {
 
 /* Contact Section */
 .contact-page {
-  padding: 4rem 0;
+  /* padding: 4rem 0; */
   background-color: #f8f9fa;
 }
 
@@ -1202,13 +1202,9 @@ body {
 /* Hero Section */
 .contact-hero {
   text-align: center;
-  margin-bottom: 3rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s forwards 0.2s;
-  /* background: linear-gradient(90deg, #64a9d6, #b1d6e9); */
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #c2f0f7 0%, #c7f9cc 100%);
+  color: #023047;
 }
 
 .contact-hero h1 {
@@ -1216,6 +1212,8 @@ body {
   color: #0f1b2d;
   margin-bottom: 1rem;
   font-weight: 700;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.2s;
 }
 
 .contact-hero p {
@@ -1229,6 +1227,8 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 @media (min-width: 768px) {
@@ -2499,7 +2499,6 @@ Reduced motion
   transform: translateY(0);
 }
 
-
 /* Item Cards */
 .carousel .item-card {
   /* flex: 0 0 280px; */
@@ -2518,7 +2517,7 @@ Reduced motion
 }
 
 .carousel .item-card .img {
-  position: relative; 
+  position: relative;
   aspect-ratio: 4 / 3;
   background-size: cover;
   background-position: center;
@@ -2556,7 +2555,7 @@ Reduced motion
 
 .carousel .item-card .buy {
   display: inline-block;
-  background:var(--leaf);
+  background: var(--leaf);
   color: white;
   padding: 10px 20px;
   border-radius: 6px;
@@ -2566,14 +2565,12 @@ Reduced motion
   transition: all 0.3s ease;
   border: 2px solid var(--leaf);
   cursor: pointer;
-   
 }
 
 .carousel .item-card .buy:hover {
   background: transparent;
   color: #2d3748;
 }
-
 
 /* Buttons */
 .btn {
@@ -2644,8 +2641,6 @@ Reduced motion
 .shop-grid > .card:nth-of-type(5) {
   grid-area: accessories;
 }
-
-
 
 /* Tablet: two columns, equal tiles; hero spans both */
 @media (max-width: 1024px) {
@@ -3870,7 +3865,7 @@ img {
   border-radius: 0;
 }
 
-.ab-video{
+.ab-video {
   position: relative;
   overflow: hidden;
 }
