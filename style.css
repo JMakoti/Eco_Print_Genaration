@@ -2316,14 +2316,13 @@ Reduced motion
   gap: 1rem;
 }
 
-.footer-social img {
-  width: 30px;
-  height: 30px;
+.footer-social .social-icons .fa-brands {
+  font-size: 1.5rem;
   filter: brightness(0) invert(1);
   transition: 0.3s;
 }
 
-.footer-social img:hover {
+.footer-social .social-icons .fa-brands:hover {
   filter: brightness(0) invert(0.8) sepia(1) hue-rotate(90deg);
 }
 
