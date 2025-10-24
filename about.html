@@ -45,7 +45,6 @@
             ></a>
             <ul class="dropdown-menu">
               <li><a href="#about">Our Story</a></li>
-              <li><a href="#goals">Mission & Vision</a></li>
               <li><a href="#values">Core Values</a></li>
               <li><a href="#process">Our Process</a></li>
               <li><a href="#portfolio">Our Impact</a></li>
@@ -125,12 +124,11 @@
       </section>
 
       <!-- About Info && History -->
-      <!---About Section-->
-      <section class="about section-pad" id="about">
+
+      <section class="aboutus section-pad" id="about">
         <div class="container">
-          <div class="about-grid-info">
-            <!-- Left block -->
-            <div class="about-card" data-animate="left">
+          <div class="story-section">
+            <div class="story">
               <h2 class="about-title">Our Story</h2>
               <p>
                 We transform plastic waste into affordable 3D-printing filaments
@@ -143,64 +141,10 @@
                 impact.
               </p>
             </div>
-
-            <!-- Center image with play -->
-            <figure class="about-media" data-animate="up">
-              <img
-                src="https://res.cloudinary.com/drselhsl4/image/upload/v1761146402/EcoPrintGeneration/img/ysebe2zp7uycypgftazo.jpg"
-                alt="EcoPrint process splash"
-                loading="lazy"
-              />
-              <button
-                class="about-play"
-                type="button"
-                aria-label="Play video"
-                aria-haspopup="dialog"
-                aria-controls="about-video-modal"
-              >
-                <svg
-                  width="26"
-                  height="26"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M8 5v14l11-7-11-7z" fill="currentColor" />
-                </svg>
-              </button>
-            </figure>
           </div>
-        </div>
-      </section>
-
-      <!-- Video Modal -->
-      <div
-        class="modal"
-        id="about-video-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-label="EcoPrint video"
-        hidden
-      >
-        <div class="modal-backdrop" data-close></div>
-        <div class="modal-body" role="document">
-          <button
-            class="modal-close"
-            type="button"
-            aria-label="Close video"
-            data-close
-          >
-            &times;
-          </button>
-          <div class="video-wrap"></div>
-        </div>
-      </div>
-
-      <!-- Visson Mission Section -->
-      <section class="mision-vision" id="goals">
-        <div class="about-grid-info2">
-          <div class="container">
-            <div class="mission">
-              <div class="about-card1" data-animate="left">
+          <div class="others-section">
+            <div class="ab-mission-vission">
+              <div class="ab-mission">
                 <h2 class="about-title">Our Mission</h2>
                 <p>
                   EcoPrint Generation’s mission is to transform plastic waste
@@ -208,11 +152,7 @@
                   innovation, and environmental conservation—turning waste into
                   opportunity for a cleaner, smarter, and more inclusive future.
                 </p>
-              </div>
-            </div>
-
-            <div class="vission">
-              <div class="about-card1" data-animate="right">
+                <br/>
                 <h2 class="about-title">Our Vision</h2>
                 <p>
                   A continent where every learner can touch, see, and build
@@ -224,6 +164,24 @@
                   <li>Materials from recycled plastics</li>
                   <li>Practical STEM for real schools</li>
                 </ul>
+              </div>
+            </div>
+            <div class="ab-media">
+              <div class="ab-image">
+                <img src="https://res.cloudinary.com/drselhsl4/image/upload/v1761146383/EcoPrintGeneration/img/zxqgxhqccjh0jhsjiq6e.jpg" alt="Image" />
+              </div>
+              <div class="ab-video">
+                <video muted poster="https://res.cloudinary.com/drselhsl4/image/upload/v1761146380/EcoPrintGeneration/img/bgtrg9rfbcptnfsmjq7r.jpg">
+                  <source src="https://res.cloudinary.com/drselhsl4/video/upload/v1761146482/EcoPrintGeneration/videos/k8ju7npozxfwn09uhwsq.mp4" type="video/mp4" />
+                </video>
+                <button class="ab-media-play" type="button">
+                      <svg width="26" height="26" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7-11-7z" fill="currentColor" />
+                      </svg>
+                    </button>
+              </div>
+              <div class="ab-image">
+                <img src="https://res.cloudinary.com/drselhsl4/image/upload/v1761146383/EcoPrintGeneration/img/uu67vkvgqluz6kslicqq.jpg" alt="Image" />
               </div>
             </div>
           </div>
@@ -241,7 +199,7 @@
                 data-wow-duration="1s"
                 data-wow-delay="0.2s"
               >
-                <!-- <img src="img/about-left-image.png" alt="person graphic" /> -->
+                <img src="https://res.cloudinary.com/drselhsl4/image/upload/v1761146379/EcoPrintGeneration/img/ey35335fvp4e7esyu1j6.png" alt="person graphic" />
               </div>
             </div>
             <div class="col-lg-8">

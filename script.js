@@ -1,4 +1,32 @@
 // ===================================================
+// Lazy Image Loading
+// ===================================================
+
+// Lazy Loading Images
+document.addEventListener("DOMContentLoaded", function () {
+  const lazyImages = document.querySelectorAll("img.lazy");
+
+  const imageObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.add("loaded");
+          img.classList.remove("lazy");
+          observer.unobserve(img);
+        }
+      });
+    },
+    {
+      rootMargin: "50px",
+    }
+  );
+
+  lazyImages.forEach((img) => imageObserver.observe(img));
+});
+
+// ===================================================
 // Sticky Navbar + Hamburger Menu
 // ===================================================
 
@@ -288,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const WHATSAPP_NUMBER = "254700000000";
 
   // Build WhatsApp links for each card
-  document.querySelectorAll(".card").forEach((card) => {
+  document.querySelectorAll(".item-card").forEach((card) => {
     const data = JSON.parse(card.dataset.product || "{}");
     const btn = card.querySelector(".buy");
     if (!btn || !data.name) return;
