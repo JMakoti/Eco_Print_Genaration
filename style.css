@@ -1046,20 +1046,21 @@ body {
   /* max-width: 1200px; */
   height: 200px;
   /* margin: 0 auto; */
-  background-image: url("https://res.cloudinary.com/drselhsl4/image/upload/v1761146383/EcoPrintGeneration/img/tkchbn5m34vhfulrgt9p.jpg");
+  /* background-image: url("https://res.cloudinary.com/drselhsl4/image/upload/v1761146383/EcoPrintGeneration/img/tkchbn5m34vhfulrgt9p.jpg");
   background-position: center center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   position: relative;
-  background-size: cover;
+  /* background-size: cover; */
+  background-color: var(--primary-color);
   padding: 100px 0px 100px 0px;
   margin-bottom: -90px;
 }
 
 .section-overlay {
   content: "";
-  background: rgba(0, 0, 0, 0)
+  /* background: rgba(0, 0, 0, 0)
     linear-gradient(rgba(39, 48, 83, 0.01) 0%, rgb(39, 48, 83) 100%) repeat
-    scroll 0% 0%;
+    scroll 0% 0%; */
   position: absolute;
   top: 0;
   right: 0;
@@ -2767,7 +2768,7 @@ Reduced motion
   --light-bg: #f8f9fa;
 }
 
-/* About hero / wrapper */
+/* About hero / wrapper  - Core Value*/ 
 .about-us {
   background-image: url("https://res.cloudinary.com/drselhsl4/image/upload/v1761146427/EcoPrintGeneration/img/mpnmk2ospjmbqje2ctvv.png");
   background-repeat: no-repeat;
@@ -3579,7 +3580,7 @@ img {
   line-height: 1.7;
   margin-bottom: 1rem;
 }
-
+/* 
 .tick-list-vission {
   list-style: none;
   padding: 0;
@@ -3599,7 +3600,7 @@ img {
   top: 0;
   color: var(--leaf);
   font-weight: bold;
-}
+} */
 
 .mission {
   margin-bottom: 50px;
@@ -3801,6 +3802,8 @@ img {
   justify-content: space-between;
   gap: 30px;
   flex-wrap: wrap;
+  /* background-color: #14ae1f; */
+  height: 320px;
 }
 
 .ab-mission-vission {
@@ -3828,7 +3831,8 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  height: 500px;
+  height: 220px;
+  margin-top: 20px;
   gap: 0;
   overflow: hidden;
 }
