@@ -522,6 +522,96 @@ document.addEventListener("mousemove", (e) => {
     }px)`;
   });
 });
+// =================================================================
+// Map Cards For The Horizontal scroll for both Videos and Articles
+// =================================================================
+
+// videos
+fetch("data/media.json")
+  .then((response) => response.json())
+  .then((data) => {
+    videos = data;
+    buildVideoCards(videos);
+  })
+  .catch((error) => console.error("Error loading videos:", error));
+
+function buildVideoCards(videos) {
+  const track = document.querySelector(".videos-track");
+  track.innerHTML = "";
+
+  videos.forEach((video) => {
+    const li = document.createElement("li");
+    li.className = `video-card ${video.background_color}`;
+
+    li.innerHTML = `
+      <article>
+        <div class="image-container">
+          <img src="${video.image_url}" alt="${video.alt_text}" />
+          <button class="about-play" type="button" data-video="${video.video_url}">
+            <svg width="26" height="26" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7-11-7z" fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+        <div class="content">
+          <header>
+            <h4 class="tag">${video.tag}</h4>
+            <h3><a href="${video.link}">${video.title}</a></h3>
+            <p class="meta">
+              <small>${video.date}</small> | <small>${video.source}</small>
+            </p>
+          </header>
+        </div>
+      </article>
+    `;
+
+    track.appendChild(li);
+  });
+}
+
+// articles
+fetch("data/articles.json")
+  .then((response) => response.json())
+  .then((data) => {
+    articles = data;
+    buildArticleCards(articles);
+  })
+  .catch((error) => console.error("Error loading articles:", error));
+
+function buildArticleCards(articles) {
+  const track = document.querySelector(".articles-track");
+
+  // Clear existing cards (optional)
+  track.innerHTML = "";
+
+  articles.forEach((article) => {
+    const li = document.createElement("li");
+    li.className = `article-card ${article.background_color}`;
+
+    li.innerHTML = `
+      <article>
+        <div class="content">
+          <header>
+            <h4 class="tag">${article.tag}</h4>
+            <h3>
+              <a href="${article.link}">${article.title}</a>
+            </h3>
+            <p class="meta">
+              <small>${article.date}</small> |
+              <small>${article.source}</small> |
+              <small>By ${article.author}</small>
+            </p>
+          </header>
+          <main>
+            <p>${article.description}</p>
+          </main>
+        </div>
+      </article>
+    `;
+
+    track.appendChild(li);
+  });
+}
 
 // ===================================================
 // Horizontal scroll for both Videos and Articles

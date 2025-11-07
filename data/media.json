@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "tag": "Video",
+    "title": "Watch how E3D Print Generation is shaping a sustainable future through 3D printing innovation and recycling.",
+    "date": "May 7, 2023",
+    "source": "NTV Kenya",
+    "background_color": "bg-blue",
+    "image_url": "https://res.cloudinary.com/drselhsl4/image/upload/v1761146401/EcoPrintGeneration/img/dlvdjdn3gd1lsvzlw2in.jpg",
+    "alt_text": "NTV Interview",
+    "link": "",
+    "video_url": "",
+    "play_icon": true
+  },
+  {
+    "id": 2,
+    "tag": "Video",
+    "title": "Explore our video stories showcasing sustainable manufacturing and technological innovation in recycling.",
+    "date": "Dec 11, 2022",
+    "source": "TV47 Kenya",
+    "background_color": "bg-red",
+    "image_url": "https://res.cloudinary.com/drselhsl4/image/upload/v1761146381/EcoPrintGeneration/img/voxp68mgjrssut2kjbua.jpg",
+    "alt_text": "TV47 Pitch",
+    "link": "",
+    "video_url": "",
+    "play_icon": true
+  },
+  {
+    "id": 3,
+    "tag": "Video",
+    "title": "See how we empower communities to create value from recycled materials through 3D printing technology.",
+    "date": "May 19, 2022",
+    "source": "Dominique Ernst",
+    "background_color": "bg-pink",
+    "image_url": "https://res.cloudinary.com/drselhsl4/image/upload/v1761146380/EcoPrintGeneration/img/bgtrg9rfbcptnfsmjq7r.jpg",
+    "alt_text": "Dominique Ernst",
+    "link": "",
+    "video_url": "",
+    "play_icon": true
+  },
+  {
+    "id": 4,
+    "tag": "Video",
+    "title": "See how we empower communities to create value from recycled materials through 3D printing technology.",
+    "date": "May 19, 2022",
+    "source": "Dominique Ernst",
+    "background_color": "bg-pink",
+    "image_url": "https://res.cloudinary.com/drselhsl4/image/upload/v1761146386/EcoPrintGeneration/img/ksy8kqdvbamgto9ce6j1.jpg",
+    "alt_text": "Dominique Ernst",
+    "link": "",
+    "video_url": "",
+    "play_icon": true
+  },
+  {
+    "id": 5,
+    "tag": "Video",
+    "title": "See how we empower communities to create value from recycled materials through 3D printing technology.",
+    "date": "May 19, 2022",
+    "source": "Dominique Ernst",
+    "background_color": "bg-pink",
+    "image_url": "https://res.cloudinary.com/drselhsl4/image/upload/v1761146380/EcoPrintGeneration/img/bgtrg9rfbcptnfsmjq7r.jpg",
+    "alt_text": "Dominique Ernst",
+    "link": "",
+    "video_url": "",
+    "play_icon": true
+  }
+]
