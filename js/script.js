@@ -586,7 +586,7 @@ function buildArticleCards(articles) {
 
   articles.forEach((article) => {
     const li = document.createElement("li");
-    li.className = `article-card ${article.background_color}`;
+    li.className = `article-card ${article.background_color} `;
 
     li.innerHTML = `
       <article>
