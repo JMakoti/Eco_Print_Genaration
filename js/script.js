@@ -527,7 +527,7 @@ document.addEventListener("mousemove", (e) => {
 // =================================================================
 
 // videos
-fetch("data/media.json")
+fetch("files/media.json")
   .then((response) => response.json())
   .then((data) => {
     videos = data;
@@ -570,7 +570,7 @@ function buildVideoCards(videos) {
 }
 
 // articles
-fetch("data/articles.json")
+fetch("files/articles.json")
   .then((response) => response.json())
   .then((data) => {
     articles = data;

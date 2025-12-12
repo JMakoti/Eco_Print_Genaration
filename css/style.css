@@ -2783,7 +2783,7 @@ body {
   justify-items: center;
 }
 
-.awards-recognitions .card {
+.awards-recognitions .award-section .card {
   width: 280px;
   height: 140px;
   text-align: center;
@@ -2792,8 +2792,28 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 30px 20px;
+  min-height: 84px;
+  background-color: orange;
 }
 
+
+.awards-recognitions .award-section .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.awards-recognitions .award-section .card h2 {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  line-height: 1.2;
+  /* display: inline-block; */
+  /* margin-bottom: 10px; */
+  align-items: center;
+}
+
+.awards-recognitions  .award-section .card p {
+  font-size: 1;
+}
 .awards-recognitions .award-section .card:nth-child(2),
 .awards-recognitions .award-section .card:nth-child(4) {
   transform: translateY(-40px);
@@ -2811,24 +2831,13 @@ body {
 }
 
 /* ===== Hover Lift Effect ===== */
-.awards-recognitions .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
 
-.awards-recognitions .card h2 {
-  font-size: clamp(1rem, 2vw, 1.3rem);
-  line-height: 1.2;
-  display: inline-block;
-  margin-bottom: 10px;
-  align-items: center;
-}
-
-.awards-recognitions .card p {
-  font-size: 1;
-}
 
 /* ===== Responsive Styles ===== */
+@media (max-width:1024px) {
+
+  
+}
 @media (max-width: 900px) {
   .awards-recognitions .content-section {
     flex-direction: column;
