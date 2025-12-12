@@ -2792,8 +2792,6 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 30px 20px;
-  min-height: 84px;
 }
 
 .awards-recognitions .award-section .card:nth-child(2),
@@ -3188,3 +3186,4 @@ body {
     width: 90%;
   }
 }
+
