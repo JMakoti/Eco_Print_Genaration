@@ -1647,8 +1647,8 @@ body {
   text-align: center;
 }
 .tms-avatar {
-  width: 58px;
-  height: 58px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
   flex: 0 0 auto;
@@ -2794,7 +2794,6 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   padding: 30px 20px;
   min-height: 84px;
-  background-color: orange;
 }
 
 
